@@ -9,3 +9,8 @@
 (setq initial-scratch-message "")
 (setq initial-major-mode 'fundamental-mode)
 
+(cond
+ ((eq window-system 'x)
+  (global-set-key "\C-z" nil)
+  ))
+
