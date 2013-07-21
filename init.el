@@ -5,3 +5,7 @@
 
 (set-scroll-bar-mode 'right)
 
+(setq inhibit-startup-message t)
+(setq initial-scratch-message "")
+(setq initial-major-mode 'fundamental-mode)
+
