@@ -14,3 +14,6 @@
   (global-set-key "\C-z" nil)
   ))
 
+(setq windmove-wrap-around t)
+(windmove-default-keybindings)
+
