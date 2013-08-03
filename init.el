@@ -17,3 +17,5 @@
 (setq windmove-wrap-around t)
 (windmove-default-keybindings)
 
+(require 'tramp)
+
