@@ -19,5 +19,11 @@
 
 (setq-default truncate-lines t)
 
+(cond
+ ((eq window-system 'x)
+  (setq x-select-enable-clipboard t)
+  (global-set-key "\C-y" 'x-clipboard-yank)
+  ))
+
 (require 'tramp)
 
