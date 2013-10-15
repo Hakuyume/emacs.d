@@ -20,6 +20,8 @@
 (setq-default truncate-lines t)
 (global-linum-mode t)
 
+(show-paren-mode t)
+
 (cond
  ((eq window-system 'x)
   (setq x-select-enable-clipboard t)
