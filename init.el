@@ -28,16 +28,5 @@
   (global-set-key "\C-y" 'x-clipboard-yank)
   ))
 
-(defface hlline
-  '(
-    (((class color)(background dark))
-     (:background "black"))
-    (((class color)(background light))
-     (:background "light blue"))
-    )
-  "*Face used by hl-line.")
-(setq hl-line-face 'hlline)
-(global-hl-line-mode)
-
 (require 'tramp)
 
