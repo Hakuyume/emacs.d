@@ -17,5 +17,7 @@
 (setq windmove-wrap-around t)
 (windmove-default-keybindings)
 
+(setq-default truncate-lines t)
+
 (require 'tramp)
 
