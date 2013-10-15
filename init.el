@@ -18,6 +18,7 @@
 (windmove-default-keybindings)
 
 (setq-default truncate-lines t)
+(global-linum-mode t)
 
 (cond
  ((eq window-system 'x)
