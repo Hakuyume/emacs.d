@@ -28,5 +28,7 @@
   (global-set-key "\C-y" 'x-clipboard-yank)
   ))
 
+(global-set-key "\C-xm" 'magit-status)
+
 (require 'tramp)
 
