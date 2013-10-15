@@ -30,5 +30,7 @@
 
 (global-set-key "\C-xm" 'magit-status)
 
+(add-hook 'doc-view-mode-hook 'auto-revert-mode)
+
 (require 'tramp)
 
