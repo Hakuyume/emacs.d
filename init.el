@@ -35,6 +35,9 @@
 (setq auto-mode-alist (cons '("\\.tex$" . yatex-mode) auto-mode-alist))
 (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
 (setq tex-command "platex")
+(add-hook 'yatex-mode-hook
+	  '(lambda ()
+	     (local-set-key "\C-c\C-c" '(lambda () (interactive) (YaTeX-typeset-menu nil ?j)))))
 
 (require 'flymake)
 
