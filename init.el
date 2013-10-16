@@ -37,7 +37,9 @@
 (setq tex-command "platex")
 (add-hook 'yatex-mode-hook
 	  '(lambda ()
-	     (local-set-key "\C-c\C-c" '(lambda () (interactive) (YaTeX-typeset-menu nil ?j)))))
+	     (local-set-key "\C-c\C-c" '(lambda () (interactive) (YaTeX-typeset-menu nil ?j)))
+	     (auto-fill-mode -1)
+	     ))
 
 (require 'flymake)
 
