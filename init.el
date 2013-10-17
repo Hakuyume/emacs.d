@@ -9,6 +9,8 @@
 (setq initial-scratch-message "")
 (setq initial-major-mode 'fundamental-mode)
 
+(setq ring-bell-function 'ignore)
+
 (cond
  ((eq window-system 'x)
   (global-set-key "\C-z" nil)
