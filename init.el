@@ -43,6 +43,9 @@
 	     (auto-fill-mode -1)
 	     ))
 
+(add-to-list 'load-path "~/.emacs.d")
+(require 'multi-term)
+
 (require 'flymake)
 
 (defun flymake-tex-init ()
