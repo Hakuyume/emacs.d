@@ -87,3 +87,12 @@
 (require 'anything-config)
 (global-set-key "\C-xa" 'anything)
 
+(add-to-list 'load-path "~/.emacs.d/popwin-el")
+(add-to-list 'load-path "~/.emacs.d/popwin-el/misc")
+(require 'popwin)
+(setq display-buffer-function 'popwin:display-buffer)
+(setq anything-samewindow nil)
+(push '("anything" :regexp t) popwin:special-display-config)
+(require 'popwin-yatex)
+(push '("*YaTeX-typesetting*") popwin:special-display-config)
+
