@@ -83,3 +83,7 @@
 
 (require 'tramp)
 
+(require 'anything)
+(require 'anything-config)
+(global-set-key "\C-xa" 'anything)
+
