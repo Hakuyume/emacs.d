@@ -86,6 +86,11 @@
 (require 'anything)
 (require 'anything-config)
 (global-set-key "\C-xa" 'anything)
+(setq anything-sources
+      (list anything-c-source-buffers
+            anything-c-source-recentf
+            anything-c-source-locate))
+
 
 (add-to-list 'load-path "~/.emacs.d/popwin-el")
 (add-to-list 'load-path "~/.emacs.d/popwin-el/misc")
