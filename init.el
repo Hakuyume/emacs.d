@@ -30,6 +30,10 @@
   (global-set-key "\C-y" 'x-clipboard-yank)
   ))
 
+(add-to-list 'load-path "~/.emacs.d/cl-lib")
+(add-to-list 'load-path "~/.emacs.d/magit")
+(add-to-list 'load-path "~/.emacs.d/git-modes")
+(require 'magit)
 (global-set-key "\C-xm" 'magit-status)
 
 (add-hook 'doc-view-mode-hook 'auto-revert-mode)
@@ -83,6 +87,7 @@
 
 (require 'tramp)
 
+(add-to-list 'load-path "~/.emacs.d/anything-config")
 (require 'anything)
 (require 'anything-config)
 (global-set-key "\C-xa" 'anything)
@@ -90,7 +95,12 @@
       (list anything-c-source-buffers
             anything-c-source-recentf
             anything-c-source-locate))
-
+(setq anything-c-locate-command
+      (case system-type
+	('gnu/linux "locate -i -r %s")
+	('berkeley-unix "locate -i %s")
+	('windows-nt "es -i -r %s")
+	(t "locate %s")))
 
 (add-to-list 'load-path "~/.emacs.d/popwin-el")
 (add-to-list 'load-path "~/.emacs.d/popwin-el/misc")
@@ -101,6 +111,8 @@
 (require 'popwin-yatex)
 (push '("*YaTeX-typesetting*") popwin:special-display-config)
 
+(add-to-list 'load-path "~/.emacs.d/auto-complete")
+(add-to-list 'load-path "~/.emacs.d/auto-complete/lib/popup")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)

@@ -1,3 +1,15 @@
 [submodule "popwin-el"]
 	path = popwin-el
 	url = https://github.com/m2ym/popwin-el.git
+[submodule "anything-config"]
+	path = anything-config
+	url = git://repo.or.cz/anything-config.git
+[submodule "magit"]
+	path = magit
+	url = git://github.com/magit/magit.git
+[submodule "git-modes"]
+	path = git-modes
+	url = git://github.com/magit/git-modes.git
+[submodule "auto-complete"]
+	path = auto-complete
+	url = git://github.com/auto-complete/auto-complete.git
