@@ -38,14 +38,16 @@
 
 (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 
-(setq auto-mode-alist (cons '("\\.tex$" . yatex-mode) auto-mode-alist))
-(autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
-(setq tex-command "platex")
-(add-hook 'yatex-mode-hook
-	  '(lambda ()
-	     (local-set-key "\C-c\C-c" '(lambda () (interactive) (YaTeX-typeset-menu nil ?j)))
-	     (auto-fill-mode -1)
-	     ))
+(when (locate-library "yatex")
+  (setq auto-mode-alist (cons '("\\.tex$" . yatex-mode) auto-mode-alist))
+  (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
+  (setq tex-command "platex")
+  (add-hook 'yatex-mode-hook
+	    '(lambda ()
+	       (local-set-key "\C-c\C-c" '(lambda () (interactive) (YaTeX-typeset-menu nil ?j)))
+	       (auto-fill-mode -1)
+	       ))
+  )
 
 (add-to-list 'load-path "~/.emacs.d")
 (require 'multi-term)
@@ -108,8 +110,10 @@
 (setq display-buffer-function 'popwin:display-buffer)
 (setq anything-samewindow nil)
 (push '("anything" :regexp t) popwin:special-display-config)
-(require 'popwin-yatex)
-(push '("*YaTeX-typesetting*") popwin:special-display-config)
+(when (locate-library "yatex")
+  (require 'popwin-yatex nil t)
+  (push '("*YaTeX-typesetting*") popwin:special-display-config)
+)
 
 (add-to-list 'load-path "~/.emacs.d/auto-complete")
 (add-to-list 'load-path "~/.emacs.d/auto-complete/lib/popup")
