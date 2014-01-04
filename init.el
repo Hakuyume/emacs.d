@@ -1,9 +1,6 @@
 (setq make-backup-files nil)
 
-(tool-bar-mode -1)
 (menu-bar-mode -1)
-
-(set-scroll-bar-mode 'right)
 
 (setq inhibit-startup-message t)
 (setq initial-scratch-message "")
@@ -13,6 +10,8 @@
 
 (cond
  ((eq window-system 'x)
+  (tool-bar-mode -1)
+  (set-scroll-bar-mode 'right)
   (global-set-key "\C-z" nil)
   ))
 
