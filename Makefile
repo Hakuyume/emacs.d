@@ -11,3 +11,9 @@ auto-complete/auto-complete.elc:
 popwin-el/popwin.elc:
 	cd popwin-el; make
 
+clean:
+	cd anything-config; make clean
+	cd magit; make clean
+	cd git-modes; make clean
+	cd auto-complete; make clean
+	cd popwin-el; make clean
