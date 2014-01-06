@@ -8,6 +8,8 @@
 
 (setq ring-bell-function 'ignore)
 
+(global-set-key "\C-h" 'delete-backward-char)
+
 (cond
  ((eq window-system 'x)
   (tool-bar-mode -1)
