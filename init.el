@@ -39,6 +39,7 @@
 
 (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 
+(add-to-list 'load-path "~/.emacs.d/yatex")
 (when (locate-library "yatex")
   (setq auto-mode-alist (cons '("\\.tex$" . yatex-mode) auto-mode-alist))
   (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
