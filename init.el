@@ -35,6 +35,7 @@
 (add-to-list 'load-path "~/.emacs.d/magit")
 (add-to-list 'load-path "~/.emacs.d/git-modes")
 (require 'magit)
+(require 'magit-blame)
 (global-set-key "\C-xm" 'magit-status)
 
 (add-hook 'doc-view-mode-hook 'auto-revert-mode)
