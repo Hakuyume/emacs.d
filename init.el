@@ -172,3 +172,11 @@
 (add-to-list 'tramp-default-proxies-alist
              '((regexp-quote (system-name)) nil nil))
 
+(defun sudo-reopen ()
+  "Reopen current buffer-file with sudo."
+  (interactive)
+  (let ((file-name (buffer-file-name)))
+    (if file-name
+        (find-alternate-file (concat "/sudo::" file-name))
+      (error "Cannot get a file name"))))
+
