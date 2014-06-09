@@ -180,3 +180,9 @@
         (find-alternate-file (concat "/sudo::" file-name))
       (error "Cannot get a file name"))))
 
+(add-to-list 'load-path "~/.emacs.d/haskell-mode")
+(require 'haskell-mode-autoloads)
+(add-to-list 'Info-default-directory-list "~/.emacs.d/haskell-mode")
+(setq auto-mode-alist (cons '("\\.hs$" . haskell-mode) auto-mode-alist))
+(setq haskell-mode-hook 'haskell-indent-mode)
+
