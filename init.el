@@ -146,11 +146,6 @@
             (unless (member (get-buffer "*scratch*") (buffer-list))
               (my-make-scratch 1))))
 
-(add-to-list 'tramp-default-proxies-alist
-             '(nil "\\`root\\'" "/ssh:%h:"))
-(add-to-list 'tramp-default-proxies-alist
-             '((regexp-quote (system-name)) nil nil))
-
 (defun sudo-reopen ()
   "Reopen current buffer-file with sudo."
   (interactive)
