@@ -65,6 +65,11 @@
 	    (lambda ()
 	      (add-hook 'before-save-hook 'clang-format-buffer nil t))))
 
+(add-hook 'c++-mode-hook
+	  (lambda ()
+	    (local-set-key "\C-c\C-c" 'compile)))
+(setq compilation-read-command nil)
+
 (defun my-make-scratch (&optional arg)
   (interactive)
   (progn
