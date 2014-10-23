@@ -50,6 +50,15 @@
   (global-set-key [zenkaku-hankaku] 'uim-mode)
   (setq uim-default-im-prop '("action_skk_hiragana")))
 
+(add-to-list 'load-path "~/.emacs.d/auto-complete-clang")
+(require 'auto-complete-clang-async)
+(defun ac-cc-mode-setup ()
+  (setq ac-clang-complete-executable "~/.emacs.d/auto-complete-clang/clang-complete")
+  (setq ac-sources '(ac-source-clang-async))
+  (ac-clang-launch-completion-process)
+  (setq ac-clang-cflags (append '("-std=c++11") ac-clang-cflags)))
+(add-hook 'c++-mode-common-hook 'ac-cc-mode-setup)
+
 (when (file-exists-p "/usr/share/clang/clang-format.el")
   (load "/usr/share/clang/clang-format.el")
   (add-hook 'c++-mode-hook
