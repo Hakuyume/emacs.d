@@ -44,6 +44,7 @@
 
 (require 'auto-complete-config)
 (ac-config-default)
+(global-auto-complete-mode t)
 
 (when (locate-library "uim-leim")
   (require 'uim-leim)
