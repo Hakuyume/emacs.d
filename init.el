@@ -50,6 +50,12 @@
   (global-set-key [zenkaku-hankaku] 'uim-mode)
   (setq uim-default-im-prop '("action_skk_hiragana")))
 
+(when (file-exists-p "/usr/share/clang/clang-format.el")
+  (load "/usr/share/clang/clang-format.el")
+  (add-hook 'c++-mode-hook
+	    (lambda ()
+	      (add-hook 'before-save-hook 'clang-format-buffer nil t))))
+
 (defun my-make-scratch (&optional arg)
   (interactive)
   (progn
