@@ -61,7 +61,7 @@
     (or arg (progn (setq arg 0)
 		   (switch-to-buffer "*scratch*")))
     (cond ((= arg 0) (message "*scratch* is cleared up."))
-	  ((= arg 1) (message "another *scratch* is created")))))
+	  ((= arg 1) (message "Another *scratch* is created.")))))
 (add-hook 'kill-buffer-query-functions
 	  (lambda ()
 	    (if (string= "*scratch*" (buffer-name))
@@ -73,10 +73,10 @@
 	      (my-make-scratch 1))))
 
 (defun sudo-reopen ()
-  "Reopen current buffer-file with sudo."
+  "Reopen current buffer with sudo."
   (interactive)
   (let ((file-name (buffer-file-name)))
     (if file-name
         (find-alternate-file (concat "/sudo::" file-name))
-      (error "Cannot get a file name"))))
+      (error "Cannot get a file name."))))
 
