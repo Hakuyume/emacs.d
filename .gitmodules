@@ -1,3 +1,0 @@
-[submodule "auto-complete-clang"]
-	path = auto-complete-clang
-	url = https://github.com/Golevka/emacs-clang-complete-async.git

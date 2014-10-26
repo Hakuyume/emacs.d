@@ -7,10 +7,10 @@
 
 (defvar my-packages
   '(
-    auto-complete
     helm
     popwin
     magit
+    company-irony
     ))
 
 (dolist (package my-packages)

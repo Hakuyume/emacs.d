@@ -42,23 +42,13 @@
 (setq helm-samewindow nil)
 (push '("helm" :regexp t) popwin:special-display-config)
 
-(require 'auto-complete-config)
-(ac-config-default)
-(global-auto-complete-mode t)
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
 
 (when (locate-library "uim-leim")
   (require 'uim-leim)
   (global-set-key [zenkaku-hankaku] 'uim-mode)
   (setq uim-default-im-prop '("action_skk_hiragana")))
-
-(add-to-list 'load-path "~/.emacs.d/auto-complete-clang")
-(require 'auto-complete-clang-async)
-(defun ac-cc-mode-setup ()
-  (setq ac-clang-complete-executable "~/.emacs.d/auto-complete-clang/clang-complete")
-  (setq ac-sources '(ac-source-clang-async))
-  (ac-clang-launch-completion-process)
-  (setq ac-clang-cflags (append '("-std=c++11") ac-clang-cflags)))
-(add-hook 'c++-mode-common-hook 'ac-cc-mode-setup)
 
 (when (file-exists-p "/usr/share/clang/clang-format.el")
   (load "/usr/share/clang/clang-format.el")
@@ -70,6 +60,9 @@
 	  (lambda ()
 	    (local-set-key "\C-c\C-c" 'compile)))
 (setq compilation-read-command nil)
+
+(add-to-list 'company-backends 'company-irony)
+(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
 
 (defun my-make-scratch (&optional arg)
   (interactive)
