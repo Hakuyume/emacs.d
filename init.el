@@ -45,6 +45,13 @@
 
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
+(custom-set-variables
+ '(company-backends
+   (quote
+    (company-irony company-bbdb company-nxml company-css company-eclim company-semantic company-xcode company-ropemacs company-cmake
+		   company-capf (company-dabbrev-code company-gtags company-etags company-keywords)
+		   company-oddmuse company-files company-dabbrev)))
+ '(irony-additional-clang-options (quote ("-std=c++11"))))
 
 (when (locate-library "uim-leim")
   (require 'uim-leim)
@@ -62,8 +69,7 @@
 	    (local-set-key "\C-c\C-c" 'compile)))
 (setq compilation-read-command nil)
 
-(add-to-list 'company-backends 'company-irony)
-(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+(add-hook 'c++-mode-hook 'irony-mode)
 
 (defun my-make-scratch (&optional arg)
   (interactive)
