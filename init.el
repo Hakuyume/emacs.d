@@ -48,7 +48,7 @@
 (custom-set-variables
  '(company-backends
    (quote
-    (company-irony company-bbdb company-nxml company-css company-eclim company-semantic company-xcode company-ropemacs company-cmake
+    (company-irony company-bbdb company-nxml company-css company-semantic company-ropemacs company-cmake
 		   company-capf (company-dabbrev-code company-gtags company-etags company-keywords)
 		   company-oddmuse company-files company-dabbrev)))
  '(irony-additional-clang-options (quote ("-std=c++11"))))
