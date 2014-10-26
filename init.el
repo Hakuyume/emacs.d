@@ -25,6 +25,7 @@
 
 (setq-default truncate-lines t)
 (global-linum-mode t)
+(column-number-mode t)
 (show-paren-mode t)
 
 (require 'package)
