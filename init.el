@@ -52,6 +52,10 @@
 (add-to-list 'helm-completing-read-handlers-alist '(dired-do-rename . nil))
 (add-to-list 'helm-completing-read-handlers-alist '(dired-create-directory . nil))
 
+(require 'whitespace)
+(global-whitespace-mode 1)
+(setq whitespace-style '(space-mark tab-mark face spaces tabs trailing))
+
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
 (setq helm-samewindow nil)
