@@ -42,6 +42,7 @@
 (setq display-buffer-function 'popwin:display-buffer)
 (setq helm-samewindow nil)
 (push '("helm" :regexp t) popwin:special-display-config)
+(push '("compilation" :regexp t) popwin:special-display-config)
 
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
