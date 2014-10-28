@@ -32,46 +32,48 @@
 (column-number-mode t)
 (show-paren-mode t)
 
-(require 'magit)
-(require 'magit-blame)
 (global-set-key "\C-xm" 'magit-status)
 
-(require 'helm-config)
 (global-set-key "\C-xa" 'helm-mini)
-(helm-mode 0)
-(define-key helm-map (kbd "C-h") 'delete-backward-char)
-(define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)
-(custom-set-variables
- '(helm-mini-default-sources
-   '(helm-source-buffers-list
-     helm-source-recentf
-     helm-source-files-in-current-dir
-     helm-source-locate)))
+(eval-after-load "helm"
+  '(progn
+     (define-key helm-map (kbd "C-h") 'delete-backward-char)
+     (define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)
+     (custom-set-variables
+      '(helm-mini-default-sources
+	'(helm-source-buffers-list
+	  helm-source-recentf
+	  helm-source-files-in-current-dir
+	  helm-source-locate)))))
 
-(require 'whitespace)
 (global-whitespace-mode 1)
-(setq whitespace-style '(space-mark tab-mark face spaces tabs trailing))
+(eval-after-load "whitespace"
+  '(progn
+     (setq whitespace-style '(space-mark tab-mark face spaces tabs trailing))))
 
-(require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
-(setq helm-samewindow nil)
-(push '("helm" :regexp t) popwin:special-display-config)
-(push '("compilation" :regexp t) popwin:special-display-config)
+(eval-after-load "popwin"
+  '(progn
+     (push '("helm" :regexp t) popwin:special-display-config)
+     (push '("compilation" :regexp t) popwin:special-display-config)))
 
-(require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
-(custom-set-variables
- '(company-backends
-   (quote
-    (company-irony company-bbdb company-nxml company-css company-semantic company-ropemacs company-cmake
-		   company-capf (company-dabbrev-code company-gtags company-etags company-keywords)
-		   company-oddmuse company-files company-dabbrev)))
- '(irony-additional-clang-options (quote ("-std=c++11"))))
+(eval-after-load "company"
+  '(progn
+     (custom-set-variables
+      '(company-backends
+	(quote
+	 (company-irony company-bbdb company-nxml company-css company-semantic company-ropemacs company-cmake
+			company-capf (company-dabbrev-code company-gtags company-etags company-keywords)
+			company-oddmuse company-files company-dabbrev))))
+      '(irony-additional-clang-options (quote ("-std=c++11")))))
 
 (when (locate-library "uim-leim")
-  (require 'uim-leim)
+  (autoload 'uim-leim "uim-leim" nil t)
   (global-set-key [zenkaku-hankaku] 'uim-mode)
-  (setq uim-default-im-prop '("action_skk_hiragana")))
+  (eval-after-load "uim-leim"
+    '(progn
+       (setq uim-default-im-prop '("action_skk_hiragana")))))
 
 (when (file-exists-p "/usr/share/clang/clang-format.el")
   (load "/usr/share/clang/clang-format.el")
@@ -86,7 +88,6 @@
 
 (add-hook 'c++-mode-hook 'irony-mode)
 
-(require 'haskell-mode)
 (add-hook 'haskell-mode-hook 'haskell-indent-mode)
 
 (defun my-make-scratch (&optional arg)
