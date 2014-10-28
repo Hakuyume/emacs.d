@@ -1,3 +1,7 @@
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(package-initialize)
+
 (setq make-backup-files nil)
 
 (menu-bar-mode -1)
@@ -27,10 +31,6 @@
 (global-linum-mode t)
 (column-number-mode t)
 (show-paren-mode t)
-
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-(package-initialize)
 
 (require 'magit)
 (require 'magit-blame)
