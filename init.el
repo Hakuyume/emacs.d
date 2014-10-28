@@ -86,6 +86,9 @@
 
 (add-hook 'c++-mode-hook 'irony-mode)
 
+(require 'haskell-mode)
+(add-hook 'haskell-mode-hook 'haskell-indent-mode)
+
 (defun my-make-scratch (&optional arg)
   (interactive)
   (progn

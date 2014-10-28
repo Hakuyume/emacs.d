@@ -11,6 +11,7 @@
     popwin
     magit
     company-irony
+    haskell-mode
     ))
 
 (dolist (package my-packages)
