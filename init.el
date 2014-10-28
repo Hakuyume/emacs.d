@@ -36,21 +36,16 @@
 (global-set-key "\C-xm" 'magit-status)
 
 (require 'helm-config)
-(helm-mode 1)
 (global-set-key "\C-xa" 'helm-mini)
-(define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)
+(helm-mode 0)
 (define-key helm-map (kbd "C-h") 'delete-backward-char)
+(define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)
 (custom-set-variables
  '(helm-mini-default-sources
    '(helm-source-buffers-list
      helm-source-recentf
      helm-source-files-in-current-dir
      helm-source-locate)))
-(add-to-list 'helm-completing-read-handlers-alist '(find-file . nil))
-(add-to-list 'helm-completing-read-handlers-alist '(write-file . nil))
-(add-to-list 'helm-completing-read-handlers-alist '(find-alternate-file . nil))
-(add-to-list 'helm-completing-read-handlers-alist '(dired-do-rename . nil))
-(add-to-list 'helm-completing-read-handlers-alist '(dired-create-directory . nil))
 
 (require 'whitespace)
 (global-whitespace-mode 1)
