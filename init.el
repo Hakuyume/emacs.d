@@ -79,22 +79,16 @@
 	    (local-set-key "\C-c\C-c" 'compile)))
 (setq compilation-read-command nil)
 
-(add-hook 'c++-mode-hook 'irony-mode)
-(eval-after-load "irony"
+(eval-after-load "company"
   '(progn
      (custom-set-variables
-      '(company-backends
-	(quote
-	 (company-irony company-bbdb company-nxml company-css company-semantic company-ropemacs company-cmake
-			company-capf (company-dabbrev-code company-gtags company-etags company-keywords)
-			company-oddmuse company-files company-dabbrev))))
-      '(irony-additional-clang-options (quote ("-std=c++11")))))
+      '(company-clang-arguments
+	'("-std=c++11")))))
 
 (add-hook 'c++-mode-hook 'flycheck-mode)
-(eval-after-load "flycheck"
-  '(progn
-     (setq flycheck-clang-language-standard "c++11")
-     (setq flycheck-clang-standard-library "libc++")))
+(add-hook 'c++-mode-hook
+	  (lambda ()
+	    (setq flycheck-clang-language-standard "c++11")))
 
 (add-hook 'haskell-mode-hook 'haskell-indent-mode)
 

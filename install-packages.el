@@ -10,8 +10,7 @@
     helm
     popwin
     magit
-    company-irony
-    haskell-mode
+    company
     ))
 
 (dolist (package my-packages)
