@@ -88,6 +88,12 @@
 
 (add-hook 'c++-mode-hook 'irony-mode)
 
+(add-hook 'c++-mode-hook 'flycheck-mode)
+(eval-after-load "flycheck"
+  '(progn
+     (setq flycheck-clang-language-standard "c++11")
+     (setq flycheck-clang-standard-library "libc++")))
+
 (add-hook 'haskell-mode-hook 'haskell-indent-mode)
 
 (defun my-make-scratch (&optional arg)
