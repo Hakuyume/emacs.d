@@ -49,7 +49,7 @@
 (global-whitespace-mode 1)
 (eval-after-load "whitespace"
   '(progn
-     (setq whitespace-style '(space-mark tab-mark face spaces tabs trailing))))
+     (setq whitespace-style '(tab-mark face tabs trailing))))
 
 (setq display-buffer-function 'popwin:display-buffer)
 (eval-after-load "popwin"
