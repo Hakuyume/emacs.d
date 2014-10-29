@@ -59,6 +59,8 @@
 
 (add-hook 'after-init-hook 'global-company-mode)
 
+(global-set-key "\C-xe" 'helm-flycheck)
+
 (when (locate-library "uim-leim")
   (autoload 'uim-leim "uim-leim" nil t)
   (global-set-key [zenkaku-hankaku] 'uim-mode)
