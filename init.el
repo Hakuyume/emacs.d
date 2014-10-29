@@ -61,10 +61,10 @@
 
 (global-set-key "\C-xe" 'helm-flycheck)
 
-(when (locate-library "uim-leim")
-  (autoload 'uim-leim "uim-leim" nil t)
+(when (locate-library "uim")
+  (autoload 'uim-mode "uim" nil t)
   (global-set-key [zenkaku-hankaku] 'uim-mode)
-  (eval-after-load "uim-leim"
+  (eval-after-load "uim"
     '(progn
        (setq uim-default-im-prop '("action_skk_hiragana")))))
 
