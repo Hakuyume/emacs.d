@@ -58,15 +58,6 @@
      (push '("compilation" :regexp t) popwin:special-display-config)))
 
 (add-hook 'after-init-hook 'global-company-mode)
-(eval-after-load "company"
-  '(progn
-     (custom-set-variables
-      '(company-backends
-	(quote
-	 (company-irony company-bbdb company-nxml company-css company-semantic company-ropemacs company-cmake
-			company-capf (company-dabbrev-code company-gtags company-etags company-keywords)
-			company-oddmuse company-files company-dabbrev))))
-      '(irony-additional-clang-options (quote ("-std=c++11")))))
 
 (when (locate-library "uim-leim")
   (autoload 'uim-leim "uim-leim" nil t)
@@ -87,6 +78,15 @@
 (setq compilation-read-command nil)
 
 (add-hook 'c++-mode-hook 'irony-mode)
+(eval-after-load "irony"
+  '(progn
+     (custom-set-variables
+      '(company-backends
+	(quote
+	 (company-irony company-bbdb company-nxml company-css company-semantic company-ropemacs company-cmake
+			company-capf (company-dabbrev-code company-gtags company-etags company-keywords)
+			company-oddmuse company-files company-dabbrev))))
+      '(irony-additional-clang-options (quote ("-std=c++11")))))
 
 (add-hook 'c++-mode-hook 'flycheck-mode)
 (eval-after-load "flycheck"
