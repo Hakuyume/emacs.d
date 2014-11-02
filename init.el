@@ -2,6 +2,8 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
 
+(prefer-coding-system 'utf-8-unix)
+
 (setq make-backup-files nil)
 
 (menu-bar-mode -1)
@@ -14,21 +16,19 @@
 
 (global-set-key "\C-h" 'delete-backward-char)
 
-(cond
- ((eq window-system 'x)
+(when window-system
   (tool-bar-mode -1)
   (set-scroll-bar-mode 'right)
-  (setq x-select-enable-clipboard t)
-  (global-set-key "\C-y" 'x-clipboard-yank)
   (global-set-key "\C-z" nil)
   (load-theme 'wombat))
+
+(cond
+ ((eq window-system 'x)
+  (setq x-select-enable-clipboard t)
+  (global-set-key "\C-y" 'x-clipboard-yank))
  ((eq window-system 'w32)
-  (prefer-coding-system 'utf-8-unix)
-  (tool-bar-mode -1)
-  (global-set-key "\C-z" nil)
-  (load-theme 'wombat)
-  (set-face-attribute 'default nil :height 120)
   (cd "~/")
+  (set-face-attribute 'default nil :height 120)
   (setq warning-minimum-level :error)
   (setq magit-git-executable "C:/Program Files (x86)/Git/bin/git.exe")))
 
