@@ -2,6 +2,16 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
 
+(defvar my-packages
+  '(helm
+    popwin
+    magit
+    company))
+
+(dolist (package my-packages)
+  (unless (package-installed-p package)
+    (package-install package)))
+
 (prefer-coding-system 'utf-8-unix)
 
 (setq make-backup-files nil)
