@@ -13,6 +13,7 @@
     (package-install package)))
 
 (prefer-coding-system 'utf-8-unix)
+(setq-default indent-tabs-mode nil)
 
 (setq make-backup-files nil)
 
@@ -59,10 +60,10 @@
      (define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)
      (custom-set-variables
       '(helm-mini-default-sources
-	'(helm-source-buffers-list
-	  helm-source-recentf
-	  helm-source-files-in-current-dir
-	  helm-source-locate)))))
+        '(helm-source-buffers-list
+          helm-source-recentf
+          helm-source-files-in-current-dir
+          helm-source-locate)))))
 
 (global-whitespace-mode 1)
 (eval-after-load "whitespace"
@@ -89,24 +90,24 @@
 (when (file-exists-p "/usr/share/clang/clang-format.el")
   (load "/usr/share/clang/clang-format.el")
   (add-hook 'c++-mode-hook
-	    (lambda ()
-	      (add-hook 'before-save-hook 'clang-format-buffer nil t))))
+            (lambda ()
+              (add-hook 'before-save-hook 'clang-format-buffer nil t))))
 
 (add-hook 'c++-mode-hook
-	  (lambda ()
-	    (local-set-key "\C-c\C-c" 'compile)))
+          (lambda ()
+            (local-set-key "\C-c\C-c" 'compile)))
 (setq compilation-read-command nil)
 
 (eval-after-load "company"
   '(progn
      (custom-set-variables
       '(company-clang-arguments
-	'("-std=c++11")))))
+        '("-std=c++11")))))
 
 (add-hook 'c++-mode-hook 'flycheck-mode)
 (add-hook 'c++-mode-hook
-	  (lambda ()
-	    (setq flycheck-clang-language-standard "c++11")))
+          (lambda ()
+            (setq flycheck-clang-language-standard "c++11")))
 
 (add-hook 'haskell-mode-hook 'haskell-indent-mode)
 
@@ -119,18 +120,18 @@
     (when (and initial-scratch-message (not inhibit-startup-message))
       (insert initial-scratch-message))
     (or arg (progn (setq arg 0)
-		   (switch-to-buffer "*scratch*")))
+                   (switch-to-buffer "*scratch*")))
     (cond ((= arg 0) (message "*scratch* is cleared up."))
-	  ((= arg 1) (message "Another *scratch* is created.")))))
+          ((= arg 1) (message "Another *scratch* is created.")))))
 (add-hook 'kill-buffer-query-functions
-	  (lambda ()
-	    (if (string= "*scratch*" (buffer-name))
-		(progn (my-make-scratch 0) nil)
-	      t)))
+          (lambda ()
+            (if (string= "*scratch*" (buffer-name))
+                (progn (my-make-scratch 0) nil)
+              t)))
 (add-hook 'after-save-hook
-	  (lambda ()
-	    (unless (member (get-buffer "*scratch*") (buffer-list))
-	      (my-make-scratch 1))))
+          (lambda ()
+            (unless (member (get-buffer "*scratch*") (buffer-list))
+              (my-make-scratch 1))))
 
 (defun sudo-reopen ()
   "Reopen current buffer with sudo."
