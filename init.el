@@ -109,6 +109,8 @@
           (lambda ()
             (setq flycheck-clang-language-standard "c++11")))
 
+(defalias 'perl-mode 'cperl-mode)
+
 (add-hook 'haskell-mode-hook 'haskell-indent-mode)
 
 (defun my-make-scratch (&optional arg)
