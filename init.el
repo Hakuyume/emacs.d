@@ -36,7 +36,10 @@
 (cond
  ((eq window-system 'x)
   (setq x-select-enable-clipboard t)
-  (global-set-key "\C-y" 'x-clipboard-yank))
+  (global-set-key "\C-y" 'x-clipboard-yank)
+  (set-face-attribute 'default nil :family "Inconsolata")
+  (set-fontset-font nil 'japanese-jisx0208
+                    (font-spec :family "IPA P Gothic")))
  ((eq window-system 'w32)
   (cd "~/")
   (set-face-attribute 'default nil :height 120)
