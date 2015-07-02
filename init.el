@@ -52,6 +52,7 @@
 (show-paren-mode t)
 
 (global-set-key "\C-xm" 'magit-status)
+(setq magit-auto-revert-mode nil)
 
 (global-set-key "\C-xa" 'helm-mini)
 (eval-after-load "helm"
