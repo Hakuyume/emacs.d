@@ -107,19 +107,16 @@
     nil))
 
 (defun cmake-build-dir (cmakelist)
-  (concat "/tmp/cmake-build/" (substring (secure-hash 'sha256 cmakelist) 0 8)))
+  (concat "/tmp/cmake-build/" (substring (secure-hash 'sha256 cmakelist) 0 8) "/"))
 
 (defun cmake-build ()
   (interactive)
   (let ((cmakelist (find-cmakelist (file-name-directory buffer-file-name))))
     (if cmakelist
-        (progn
-          (make-directory (cmake-build-dir cmakelist) t)
-          (compile
-           (concat
-            "cd " (cmake-build-dir cmakelist) " && "
-            "cmake " (file-name-directory cmakelist) " && "
-            "make")))
+        (let ((default-directory (concat (cmake-build-dir cmakelist))))
+          (progn
+            (make-directory default-directory t)
+            (compile (format "cmake %s && make" (file-name-directory cmakelist)))))
       (message "Cannot find CMakeLists.txt"))))
 
 (add-hook 'c++-mode-hook
