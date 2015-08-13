@@ -91,16 +91,44 @@
     '(progn
        (setq uim-default-im-prop '("action_skk_hiragana")))))
 
+(defun find-cmakelist (path)
+  (if path
+      (let
+          ((cmakefile (expand-file-name (concat path "/CMakeLists.txt")))
+           (parent-dir (expand-file-name (concat path "/.."))))
+        (if (file-exists-p cmakefile)
+            cmakefile
+          (if (string= parent-dir "/")
+              nil
+            (find-cmakelist parent-dir))))
+    nil))
+
+(defun cmake-build-dir (cmakelist)
+  (concat "/tmp/cmake-build/" (substring (secure-hash 'sha256 cmakelist) 0 8)))
+
+(defun cmake-build ()
+  (interactive)
+  (let ((cmakelist (find-cmakelist (file-name-directory buffer-file-name))))
+    (if cmakelist
+        (progn
+          (make-directory (cmake-build-dir cmakelist) t)
+          (compile
+           (concat
+            "cd " (cmake-build-dir cmakelist) " && "
+            "cmake " (file-name-directory cmakelist) " && "
+            "make")))
+      (message "Cannot find CMakeLists.txt"))))
+
+(add-hook 'c++-mode-hook
+          (lambda ()
+            (when (find-cmakelist (file-name-directory buffer-file-name))
+              (local-set-key "\C-c\C-c" 'cmake-build))))
+
 (when (file-exists-p "/usr/share/clang/clang-format.el")
   (load "/usr/share/clang/clang-format.el")
   (add-hook 'c++-mode-hook
             (lambda ()
               (add-hook 'before-save-hook 'clang-format-buffer nil t))))
-
-(add-hook 'c++-mode-hook
-          (lambda ()
-            (local-set-key "\C-c\C-c" 'compile)))
-(setq compilation-read-command nil)
 
 (eval-after-load "company"
   '(progn
