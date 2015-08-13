@@ -2,16 +2,18 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
 
-(defvar my-packages
+(defvar auto-install-packages
   '(helm
     popwin
     magit
     company
     flycheck))
 
-(dolist (package my-packages)
-  (unless (package-installed-p package)
-    (package-install package)))
+(unless (file-exists-p "~/.emacs.d/elpa")
+  (progn
+    (package-refresh-contents)
+    (dolist (package auto-install-packages)
+      (package-install package))))
 
 (prefer-coding-system 'utf-8-unix)
 (setq-default indent-tabs-mode nil)
