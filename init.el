@@ -117,8 +117,7 @@
 
 (add-hook 'haskell-mode-hook 'haskell-indent-mode)
 
-(defun my-make-scratch (&optional arg)
-  (interactive)
+(defun make-scratch (&optional arg)
   (progn
     (set-buffer (get-buffer-create "*scratch*"))
     (funcall initial-major-mode)
@@ -132,12 +131,12 @@
 (add-hook 'kill-buffer-query-functions
           (lambda ()
             (if (string= "*scratch*" (buffer-name))
-                (progn (my-make-scratch 0) nil)
+                (progn (make-scratch 0) nil)
               t)))
 (add-hook 'after-save-hook
           (lambda ()
             (unless (member (get-buffer "*scratch*") (buffer-list))
-              (my-make-scratch 1))))
+              (make-scratch 1))))
 
 (defun sudo-reopen ()
   "Reopen current buffer with sudo."
