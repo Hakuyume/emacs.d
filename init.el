@@ -7,7 +7,7 @@
     popwin
     magit
     company
-    flycheck))
+    helm-flycheck))
 
 (unless (file-exists-p "~/.emacs.d/elpa")
   (progn
