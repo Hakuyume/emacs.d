@@ -6,7 +6,8 @@
   '(helm
     popwin
     magit
-    company))
+    company
+    flycheck))
 
 (dolist (package my-packages)
   (unless (package-installed-p package)
