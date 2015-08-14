@@ -48,15 +48,15 @@
           (setq cmake-project t)
           (setq cmake-build-dir (concat "/tmp/cmake-build/" (substring (secure-hash 'sha256 cmake-cmakelist) 0 8) "/"))
           (make-directory cmake-build-dir t)
-          (let (
-                (default-directory cmake-build-dir)
+          (let ((default-directory cmake-build-dir)
                 (json-key-type 'string))
             (unless (and (file-exists-p "Makefile") (file-exists-p "compile_commands.json"))
-              (compile (format "cmake %s -DCMAKE_EXPORT_COMPILE_COMMANDS=ON" (file-name-directory cmake-cmakelist))))
+              (message "Running cmake ...")
+              (call-process "cmake" nil nil nil (file-name-directory cmake-cmakelist) "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON")
+              (message "Done."))
             (let ((cmake-compile-options
                    (cmake-parse-compile-options (cdr (assoc "command" (elt (json-read-file "compile_commands.json") 0))))))
-              (progn
-                (cmake-config-company cmake-compile-options)
-                (cmake-config-flycheck cmake-compile-options))))
+              (cmake-config-company cmake-compile-options)
+              (cmake-config-flycheck cmake-compile-options)))
           (local-set-key "\C-c\C-c" 'cmake-build))
       (message "Cannot find CMakeLists.txt."))))
