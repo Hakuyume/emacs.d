@@ -10,10 +10,9 @@
     helm-flycheck))
 
 (unless (file-exists-p "~/.emacs.d/elpa")
-  (progn
-    (package-refresh-contents)
-    (dolist (package auto-install-packages)
-      (package-install package))))
+  (package-refresh-contents)
+  (dolist (package auto-install-packages)
+    (package-install package)))
 
 (prefer-coding-system 'utf-8-unix)
 (setq-default indent-tabs-mode nil)
