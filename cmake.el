@@ -26,18 +26,22 @@
   (mapcar (lambda (x) (concat "-" x))
           (cdr (split-string command " +-"))))
 
-(defun cmake-filter-compile-options (regex options)
-  (delete nil (mapcar (lambda (x) (when (string-match regex x) x)) options)))
+(defun cmake-filter-compile-options (options)
+  (let ((case-fold-search nil))
+    (delete nil
+            (mapcar (lambda (x)
+                      (when (string-match "^-std=\\|^-I\\|^-isystem\\|^-D" x)
+                        (replace-regexp-in-string "^-isystem +" "-I" x))) options))))
 
 (defun cmake-config-company (options)
   (progn
     (make-local-variable 'company-clang-arguments)
-    (setq company-clang-arguments (cmake-filter-compile-options "^-std\\|^-I" options))))
+    (setq company-clang-arguments (cmake-filter-compile-options  options))))
 
 (defun cmake-config-flycheck (options)
   (progn
     (make-local-variable 'flycheck-clang-args)
-    (setq flycheck-clang-args (cmake-filter-compile-options "^-std\\|^-I" options))))
+    (setq flycheck-clang-args (cmake-filter-compile-options options))))
 
 (defun cmake-setup ()
   (interactive)
