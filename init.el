@@ -58,6 +58,9 @@
 
 (global-set-key "\C-xm" 'magit-status)
 (setq magit-auto-revert-mode nil)
+(eval-after-load "magit"
+  '(progn
+     (define-key magit-mode-map "\C-xa" 'helm-mini)))
 
 (global-set-key "\C-xa" 'helm-mini)
 (eval-after-load "helm"
