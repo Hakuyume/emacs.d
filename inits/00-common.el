@@ -1,3 +1,5 @@
+(cd "~/")
+
 (prefer-coding-system 'utf-8-unix)
 (setq-default indent-tabs-mode nil)
 (setq make-backup-files nil)
