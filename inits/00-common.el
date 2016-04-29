@@ -28,5 +28,5 @@
   (load-theme 'wombat))
 
 (when (eq window-system 'w32)
-  (set-face-attribute 'default nil  :family "Consolas" :height 110)
-  (set-fontset-font nil '(#x80 . #x3FFFFF)  (font-spec :family "Yu Gothic")))
+  (set-face-attribute 'default nil :family "Consolas" :height 110)
+  (set-fontset-font nil '(#x80 . #x3FFFFF) (font-spec :family "Yu Gothic")))
