@@ -1,6 +1,9 @@
 (add-hook 'latex-mode-hook 'indent-guide-mode)
 (add-hook 'latex-mode-hook
           (lambda ()
+            (set (make-local-variable 'compile-command) "make")
+            (set (make-local-variable 'compilation-read-command) nil)
+            (define-key latex-mode-map "\C-c\C-c" 'compile)
             (make-local-variable 'helm-mini-default-sources)
             (add-to-list 'helm-mini-default-sources helm-source-latex-symbols)
             (yas-minor-mode)
