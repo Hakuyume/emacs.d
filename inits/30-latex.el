@@ -13,13 +13,15 @@
 (eval-after-load "reftex"
   '(progn
      (setq reftex-refstyle "\\ref")
-     (push '("reftex" :regexp t) popwin:special-display-config)
      (defvar helm-source-reftex
        '((name . "RefTeX")
          (candidates . (("ref" . reftex-reference)
                         ("cite" . reftex-citation)
                         ("label" . reftex-label)))
          (action . command-execute)))))
+(eval-after-load "popwin"
+  '(progn
+     (push '("reftex" :regexp t) popwin:special-display-config)))
 (eval-after-load "helm"
   '(progn
      (defvar helm-source-latex-symbols
