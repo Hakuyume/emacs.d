@@ -25,7 +25,8 @@
   (tool-bar-mode -1)
   (set-scroll-bar-mode 'right)
   (global-set-key "\C-z" nil)
-  (load-theme 'misterioso))
+  (load-theme 'misterioso)
+  (set-frame-parameter nil 'alpha 95))
 
 (when (eq window-system 'w32)
   (set-face-attribute 'default nil :family "Consolas" :height 110)
