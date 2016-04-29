@@ -17,6 +17,14 @@
                         ("cite" . reftex-citation)
                         ("label" . reftex-label)))
          (action . command-execute)))))
+(eval-after-load "helm"
+  '(progn
+     (defvar helm-source-latex-symbols
+       (helm-build-sync-source "Symbols"
+         :candidates (mapcar (lambda (symbol)
+                               (cons (concat (cdr symbol) "\t" (car symbol)) (concat "\\" (car symbol))))
+                             latex-symbols)
+         :action 'insert))))
 (defvar latex-symbols
   '(("alpha" . "α")
     ("beta" . "β")
@@ -68,11 +76,3 @@
     ("subseteq" . "⊆")
     ("supset" . "⊃")
     ("supseteq" . "⊇")))
-(eval-after-load "helm"
-  '(progn
-     (defvar helm-source-latex-symbols
-       (helm-build-sync-source "Symbols"
-         :candidates (mapcar (lambda (symbol)
-                               (cons (concat (cdr symbol) "\t" (car symbol)) (concat "\\" (car symbol))))
-                             latex-symbols)
-         :action 'insert))))
