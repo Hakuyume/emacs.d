@@ -5,7 +5,8 @@
     helm
     popwin
     magit
-    company))
+    company
+    indent-guide))
 
 (dolist (package auto-install-packages)
   (unless (package-installed-p package)
