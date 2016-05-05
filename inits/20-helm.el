@@ -1,4 +1,5 @@
 (global-set-key "\C-xa" 'helm-mini)
+(global-set-key "\M-y" 'helm-show-kill-ring)
 (eval-after-load "helm"
   '(progn
      (define-key helm-map "\C-h" 'delete-backward-char)
