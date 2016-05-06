@@ -3,11 +3,18 @@
    (secure-hash 'sha512
                 (concat (current-time-string) (number-to-string (random t))))
    0 len))
+(defun prefer-extension (mode)
+  (cdr (assoc mode
+              '((emacs-lisp-mode . ".el")
+                (haskell-mode . ".hs")
+                (latex-mode . ".tex")
+                (markdown-mode . ".md")
+                (cperl-mode . ".pl")
+                (python-mode . ".py")))))
 (defun save-buffer-custom ()
   (interactive)
   (if (string= "*scratch*" (buffer-name))
-      (let ((default-directory (concat "~/scratches/" (random-str 16))))
-        (save-buffer))
+      (write-file (concat "~/scratches/" (random-str 16) (prefer-extension major-mode)))
     (save-buffer)))
 (global-set-key "\C-x\C-s" 'save-buffer-custom)
 
