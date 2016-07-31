@@ -1,13 +1,21 @@
 (package-refresh-contents)
 
-(defvar auto-install-packages
-  '(init-loader
-    helm
-    popwin
-    magit
+(defvar packages
+  '(
     company
-    indent-guide))
+    helm
+    helm-c-yasnippet
+    indent-guide
+    init-loader
+    magit
+    popwin
 
-(dolist (package auto-install-packages)
+    cmake-mode
+    haskell-mode
+    makdown-mode
+    scala-mode
+    yaml-mode))
+
+(dolist (package packages)
   (unless (package-installed-p package)
     (package-install package)))
