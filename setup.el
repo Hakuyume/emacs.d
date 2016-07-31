@@ -5,6 +5,7 @@
     company
     helm
     helm-c-yasnippet
+    helm-flycheck
     indent-guide
     init-loader
     magit
