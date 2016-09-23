@@ -1,0 +1,5 @@
+(elscreen-start)
+(elscreen-set-prefix-key "\C-t")
+(setq elscreen-tab-display-control nil)
+(setq elscreen-tab-display-kill-screen nil)
+(define-key elscreen-map "\C-t" 'elscreen-toggle)

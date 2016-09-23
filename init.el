@@ -6,6 +6,7 @@
  '(package-selected-packages
    '(
      company
+     elscreen
      fcitx
      helm
      helm-c-yasnippet
