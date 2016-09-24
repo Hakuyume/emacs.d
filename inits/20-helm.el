@@ -1,5 +1,6 @@
 (global-set-key "\C-xa" 'helm-mini)
 (global-set-key "\M-y" 'helm-show-kill-ring)
+(global-set-key "\C-tw" 'helm-elscreen)
 (eval-after-load "helm"
   '(progn
      (setq helm-display-function 'pop-to-buffer)
