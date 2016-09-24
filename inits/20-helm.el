@@ -10,9 +10,6 @@
           helm-source-recentf
           helm-source-files-in-current-dir
           helm-source-locate)))))
-(eval-after-load "popwin"
-  '(progn
-     (push '("helm" :regexp t) popwin:special-display-config)))
 (eval-after-load "magit"
   '(progn
      (define-key magit-mode-map "\C-xa" 'helm-mini)))

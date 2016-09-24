@@ -14,7 +14,7 @@
      indent-guide
      init-loader
      magit
-     popwin
+     shackle
 
      cmake-mode
      haskell-mode
