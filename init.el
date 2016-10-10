@@ -18,7 +18,7 @@
 
      cmake-mode
      haskell-mode
-     makdown-mode
+     markdown-mode
      scala-mode
      yaml-mode
 
