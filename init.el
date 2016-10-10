@@ -20,6 +20,7 @@
      haskell-mode
      markdown-mode
      scala-mode
+     web-mode
      yaml-mode
 
      clang-format
