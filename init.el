@@ -19,6 +19,7 @@
      cmake-mode
      haskell-mode
      markdown-mode
+     matlab-mode
      scala-mode
      web-mode
      yaml-mode
