@@ -20,7 +20,9 @@
      haskell-mode
      markdown-mode
      matlab-mode
+     rust-mode
      scala-mode
+     toml-mode
      web-mode
      yaml-mode
 
@@ -28,7 +30,8 @@
      rtags
      cmake-ide
      py-autopep8
-     company-jedi)))
+     company-jedi
+     racer)))
 
 (setq init-loader-show-log-after-init nil)
 (init-loader-load)
