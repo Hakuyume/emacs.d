@@ -7,6 +7,3 @@
     (switch-to-buffer-other-window "*qrencode*")
     (read-only-mode)
     (goto-char 0)))
-(eval-after-load "popwin"
-  '(progn
-     (push '("*qrencode*" :regexp nil) popwin:special-display-config)))
