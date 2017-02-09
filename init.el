@@ -17,6 +17,7 @@
 
      cmake-mode
      haskell-mode
+     lua-mode
      markdown-mode
      matlab-mode
      rust-mode
