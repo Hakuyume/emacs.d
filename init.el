@@ -29,6 +29,7 @@
      rtags
      cmake-ide
      py-autopep8
+     flycheck-pyflakes
      company-jedi
      racer)))
 
