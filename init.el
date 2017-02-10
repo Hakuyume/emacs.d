@@ -7,7 +7,6 @@
    '(
      company
      elscreen
-     fcitx
      helm
      helm-c-yasnippet
      helm-flycheck
