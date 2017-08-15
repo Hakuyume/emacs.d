@@ -23,6 +23,7 @@
      rust-mode
      scala-mode
      toml-mode
+     typescript-mode
      web-mode
      yaml-mode
 
