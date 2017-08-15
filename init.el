@@ -5,6 +5,7 @@
 (custom-set-variables
  '(package-selected-packages
    '(
+     buffer-move
      company
      elscreen
      helm
