@@ -18,6 +18,7 @@
 
      cmake-mode
      haskell-mode
+     js2-mode
      lua-mode
      markdown-mode
      matlab-mode
