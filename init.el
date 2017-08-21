@@ -10,6 +10,7 @@
      elscreen
      helm
      helm-c-yasnippet
+     helm-elscreen
      helm-flycheck
      indent-guide
      init-loader
