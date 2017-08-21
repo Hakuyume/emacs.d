@@ -8,6 +8,7 @@
      buffer-move
      company
      elscreen
+     elscreen-separate-buffer-list
      helm
      helm-c-yasnippet
      helm-elscreen

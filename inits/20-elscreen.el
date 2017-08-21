@@ -1,4 +1,5 @@
 (elscreen-start)
+(elscreen-separate-buffer-list-mode)
 (elscreen-set-prefix-key "\C-t")
 (setq elscreen-tab-display-control nil)
 (setq elscreen-tab-display-kill-screen nil)
