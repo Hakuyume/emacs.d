@@ -22,9 +22,6 @@
                         ("cite" . reftex-citation)
                         ("label" . reftex-label)))
          (action . command-execute)))))
-(eval-after-load "popwin"
-  '(progn
-     (push '("reftex" :regexp t) popwin:special-display-config)))
 (eval-after-load "helm"
   '(progn
      (defvar helm-source-latex-symbols
