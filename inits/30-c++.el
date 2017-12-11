@@ -1,3 +1,5 @@
+(add-to-list 'auto-mode-alist '("\\.cu\\'" . c++-mode))
+
 (defvar helm-source-rtags
   '((name . "RTags")
     (candidates . (("display summary" . rtags-display-summary)
