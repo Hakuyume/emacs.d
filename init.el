@@ -25,6 +25,7 @@
      lua-mode
      markdown-mode
      matlab-mode
+     ninja-mode
      rust-mode
      scala-mode
      toml-mode
