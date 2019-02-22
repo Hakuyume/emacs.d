@@ -12,4 +12,8 @@
           helm-source-recentf)))))
 (eval-after-load "magit"
   '(progn
-     (define-key magit-mode-map "\C-xa" 'helm-mini)))
+     (define-key magit-mode-map "\C-xa" 'helm-mini)
+     (define-key magit-mode-map "G"
+       (lambda () (interactive)
+         (let ((default-directory (magit-toplevel)))
+           (helm-grep-do-git-grep t))))))
