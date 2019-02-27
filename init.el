@@ -7,6 +7,7 @@
    '(
      buffer-move
      company
+     default-text-scale
      elscreen
      elscreen-separate-buffer-list
      helm
