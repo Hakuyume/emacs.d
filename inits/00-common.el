@@ -33,9 +33,9 @@
   (set-frame-parameter nil 'alpha 95))
 
 (when (eq window-system 'w32)
-  (set-face-attribute 'default nil :family "Consolas" :height 110)
+  (set-face-attribute 'default nil :family "Consolas")
   (set-fontset-font nil '(#x80 . #x3FFFFF) (font-spec :family "Yu Gothic")))
 
 (when (eq window-system 'x)
-  (set-face-attribute 'default nil :family "Inconsolata" :height 110)
+  (set-face-attribute 'default nil :family "Inconsolata")
   (set-fontset-font nil '(#x80 . #x3FFFFF) (font-spec :family "IPA Gothic")))
