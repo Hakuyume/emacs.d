@@ -13,6 +13,7 @@
      helm-c-yasnippet
      helm-elscreen
      helm-flycheck
+     helm-rtags
      indent-guide
      init-loader
      magit
@@ -34,7 +35,6 @@
      yaml-mode
 
      clang-format
-     rtags
      cmake-ide
      py-autopep8
      flycheck-pyflakes
