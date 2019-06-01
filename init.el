@@ -13,10 +13,8 @@
      elscreen
      elscreen-separate-buffer-list
      helm
-     helm-c-yasnippet
      helm-elscreen
      helm-flycheck
-     helm-rtags
      indent-guide
      magit
      shackle
@@ -36,8 +34,6 @@
      web-mode
      yaml-mode
 
-     clang-format
-     cmake-ide
      py-autopep8
      flycheck-pyflakes
      company-jedi

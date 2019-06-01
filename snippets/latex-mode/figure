@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: figure
-# --
-\begin{figure}[!t]
-  \centering
-  \includegraphics[width=${1:1}\hsize]{figure/${2:name}.pdf}
-  \caption{$0}
-  \label{fig:$2}
-\end{figure}
