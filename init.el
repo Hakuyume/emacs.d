@@ -39,6 +39,9 @@
      company-jedi
      racer)))
 
+(unless (package-installed-p 'use-package)
+  (defmacro use-package (&rest args)))
+
 (use-package init-loader
   :custom (init-loader-show-log-after-init nil)
   :init (init-loader-load))
