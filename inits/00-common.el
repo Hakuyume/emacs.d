@@ -28,7 +28,7 @@
 (when window-system
   (tool-bar-mode -1)
   (set-scroll-bar-mode 'right)
-  (global-set-key "\C-z" nil)
+  (global-set-key (kbd "C-z") nil)
   (load-theme 'misterioso)
   (set-frame-parameter nil 'alpha 95))
 
