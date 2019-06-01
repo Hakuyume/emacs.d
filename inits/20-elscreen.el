@@ -9,3 +9,6 @@
   (elscreen-tab-display-control nil)
   (elscreen-tab-display-kill-screen nil)
   :init (elscreen-start))
+
+(use-package helm-elscreen
+  :bind ("C-t w" . helm-elscreen))
