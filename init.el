@@ -22,7 +22,6 @@
      lsp-ui
      magit
      shackle
-     zenburn-theme
 
      cmake-mode
      dockerfile-mode

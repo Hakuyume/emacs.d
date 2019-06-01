@@ -29,7 +29,7 @@
   (tool-bar-mode -1)
   (set-scroll-bar-mode 'right)
   (global-set-key (kbd "C-z") nil)
-  (load-theme 'zenburn t)
+  (load-theme 'misterioso)
   (set-frame-parameter nil 'alpha 95))
 
 (when (eq window-system 'w32)
