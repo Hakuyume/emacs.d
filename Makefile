@@ -6,4 +6,4 @@ install:
 
 .PHONY: clean
 clean:
-	git clean -fdX
+	-rm -r elpa/
