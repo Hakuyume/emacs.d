@@ -10,12 +10,16 @@
 
      buffer-move
      company
+     company-lsp
      elscreen
      elscreen-separate-buffer-list
      helm
      helm-elscreen
      helm-flycheck
+     helm-xref
      indent-guide
+     lsp-mode
+     lsp-ui
      magit
      shackle
 
@@ -32,12 +36,7 @@
      toml-mode
      typescript-mode
      web-mode
-     yaml-mode
-
-     py-autopep8
-     flycheck-pyflakes
-     company-jedi
-     racer)))
+     yaml-mode)))
 
 (unless (package-installed-p 'use-package)
   (defmacro use-package (&rest args)))
