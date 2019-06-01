@@ -1,5 +1,4 @@
-/*
-!*.md
-!*.el
-!inits
-!snippets
+/auto-save-list/
+/elpa/
+/recentf
+/transient/
