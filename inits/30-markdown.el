@@ -7,4 +7,5 @@
   (markdown-asymmetric-header t)
   (markdown-command "pandoc -s --mathjax -f markdown -t html"))
 
-(add-hook 'markdown-mode-hook 'indent-guide-mode)
+(use-package indent-guide
+  :hook (markdown-mode . indent-guide-mode))
