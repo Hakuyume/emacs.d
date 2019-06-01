@@ -5,6 +5,7 @@
             (elscreen-separate-buffer-list-mode)
             (elscreen-set-prefix-key "\C-t"))
   :custom
+  (elscreen-display-tab nil)
   (elscreen-tab-display-control nil)
   (elscreen-tab-display-kill-screen nil)
   :init (elscreen-start))
