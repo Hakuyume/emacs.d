@@ -1,5 +1,6 @@
-(add-hook 'python-mode-hook
-          (lambda ()
-            (lsp)
-            (add-hook 'before-save-hook 'lsp-format-buffer nil t)))
-(add-hook 'python-mode-hook 'indent-guide-mode)
+(use-package lsp
+  :custom (lsp-pyls-configuration-sources '("flake8"))
+  :hook (python-mode . lsp))
+
+(use-package indent-guide
+  :hook (python-mode . indent-guide-mode))
