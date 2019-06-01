@@ -1,2 +1,3 @@
-(add-hook 'after-init-hook 'global-company-mode)
-(global-set-key (kbd "<M-tab>") 'company-complete)
+(use-package company
+  :bind ("M-<tab>" . company-complete)
+  :hook ((after-init . global-company-mode)))

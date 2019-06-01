@@ -1,1 +1,2 @@
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
+(use-package js2-jsx-mode
+  :mode "\\.js\\'")

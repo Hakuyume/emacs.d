@@ -1,2 +1,2 @@
-(eval-after-load "indent-guide"
-  '(set-face-foreground 'indent-guide-face "green"))
+(use-package indent-guide
+  :config (set-face-foreground 'indent-guide-face "green"))

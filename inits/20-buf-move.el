@@ -1,4 +1,5 @@
-(global-set-key (kbd "<C-S-left>") 'buf-move-left)
-(global-set-key (kbd "<C-S-right>") 'buf-move-right)
-(global-set-key (kbd "<C-S-up>") 'buf-move-up)
-(global-set-key (kbd "<C-S-down>") 'buf-move-down)
+(use-package buf-move
+  :bind (("C-S-<left>" . buf-move-left)
+         ("C-S-<right>" . buf-move-right)
+         ("C-S-<up>" . buf-move-up)
+         ("<C-S-down>" . buf-move-down)))

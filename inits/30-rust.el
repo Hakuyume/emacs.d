@@ -1,3 +1,5 @@
-(add-hook 'rust-mode-hook 'racer-mode)
-(custom-set-variables
- '(rust-format-on-save t))
+(use-package rust-mode
+  :custom (rust-format-on-save t))
+
+(use-package racer-mode
+  :hook rust-mode)

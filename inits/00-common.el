@@ -11,7 +11,7 @@
 (setq initial-scratch-message "")
 (setq initial-major-mode 'fundamental-mode)
 
-(global-set-key "\C-h" 'delete-backward-char)
+(global-set-key (kbd "C-h") 'delete-backward-char)
 
 (setq windmove-wrap-around t)
 (windmove-default-keybindings)

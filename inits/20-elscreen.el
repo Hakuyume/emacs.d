@@ -1,6 +1,10 @@
+(use-package elscreen
+  :bind (:map elscreen-map
+              ("C-t" . elscreen-toggle))
+  :config (progn
+            (elscreen-separate-buffer-list-mode)
+            (elscreen-set-prefix-key "\C-t"))
+  :custom
+  (elscreen-tab-display-control nil)
+  (elscreen-tab-display-kill-screen nil))
 (elscreen-start)
-(elscreen-separate-buffer-list-mode)
-(elscreen-set-prefix-key "\C-t")
-(setq elscreen-tab-display-control nil)
-(setq elscreen-tab-display-kill-screen nil)
-(define-key elscreen-map "\C-t" 'elscreen-toggle)

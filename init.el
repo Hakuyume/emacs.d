@@ -5,6 +5,9 @@
 (custom-set-variables
  '(package-selected-packages
    '(
+     init-loader
+     use-package
+
      buffer-move
      company
      elscreen
@@ -15,7 +18,6 @@
      helm-flycheck
      helm-rtags
      indent-guide
-     init-loader
      magit
      shackle
 
@@ -41,5 +43,6 @@
      company-jedi
      racer)))
 
-(setq init-loader-show-log-after-init nil)
+(use-package init-loader
+  :custom (init-loader-show-log-after-init nil))
 (init-loader-load)

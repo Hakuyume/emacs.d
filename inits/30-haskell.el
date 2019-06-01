@@ -1,1 +1,2 @@
-(add-hook 'haskell-mode-hook 'haskell-indent-mode)
+(use-package haskell-mode
+  :hook ((haskell-mode . haskell-indent-mode)))
