@@ -6,8 +6,7 @@
    [("h" "Helm" helm-mini)]
    [("H" "Helm (large)" transient-dashboard-helm-large)]
    [("j" "Goto Line" goto-line)]
-   [("m" "Magit" magit-status)]
-   [("t" "Elscreen" transient-dashboard-elscreen)]])
+   [("m" "Magit" magit-status)]])
 
 (define-transient-command transient-dashboard-grep ()
   [[("g" "Git Grep" transient-dashboard-grep-git-grep)]
@@ -22,11 +21,6 @@
 (defun transient-dashboard-grep-git-grep ()
   (interactive)
   (let ((default-directory (magit-toplevel))) (helm-grep-do-git-grep t)))
-
-(define-transient-command transient-dashboard-elscreen ()
-  [[("c" "Create" elscreen-create)]
-   [("t" "Toggle" elscreen-toggle)]
-   [("w" "Screens" helm-elscreen)]])
 
 (global-set-key (kbd "C-t") 'transient-dashboard)
 (define-key dired-mode-map (kbd "C-t") 'transient-dashboard)

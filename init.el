@@ -11,10 +11,7 @@
      buffer-move
      company
      company-lsp
-     elscreen
-     elscreen-separate-buffer-list
      helm
-     helm-elscreen
      helm-flycheck
      helm-projectile
      helm-xref
