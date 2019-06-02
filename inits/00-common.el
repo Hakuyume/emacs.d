@@ -3,6 +3,7 @@
 (prefer-coding-system 'utf-8-unix)
 (setq-default indent-tabs-mode nil)
 (setq make-backup-files nil)
+(setq custom-file (locate-user-emacs-file "custom.el"))
 
 (menu-bar-mode -1)
 (setq ring-bell-function 'ignore)
