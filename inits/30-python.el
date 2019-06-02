@@ -19,7 +19,7 @@
      (find-python-venv (file-name-directory (directory-file-name path)))))))
 
 (defun find-pyls (path)
-  (let ((venv (find-python-venv path)))
-    (if venv
-        (expand-file-name "pyls" (expand-file-name "bin" venv))
-      "pyls")))
+  (cons
+   (if-let ((venv (find-python-venv path)))
+       (expand-file-name "python" (expand-file-name "bin" venv)) "python")
+   '("-m" "pyls")))
