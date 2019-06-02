@@ -10,6 +10,13 @@
    '(helm-source-buffers-list
      helm-source-recentf)))
 
+(use-package helm-projectile
+  :custom
+  (helm-mini-default-sources
+   '(helm-source-buffers-list
+     helm-source-recentf
+     helm-source-projectile-files-list)))
+
 (use-package helm-xref
-  :init (custom-set-variables
-         '(xref-show-xrefs-function 'helm-xref-show-xrefs)))
+  :custom
+  (xref-show-xrefs-function 'helm-xref-show-xrefs))

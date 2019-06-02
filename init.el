@@ -16,6 +16,7 @@
      helm
      helm-elscreen
      helm-flycheck
+     helm-projectile
      helm-xref
      indent-guide
      lsp-mode
