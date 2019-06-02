@@ -1,6 +1,5 @@
 (use-package helm
-  :bind (("C-x a" . helm-mini)
-         ("M-y" . helm-show-kill-ring)
+  :bind (("M-y" . helm-show-kill-ring)
          :map helm-map
          ("C-h" . delete-backward-char)
          ("<tab>" . helm-execute-persistent-action))
@@ -10,17 +9,9 @@
    '(helm-source-buffers-list
      helm-source-recentf)))
 
-(use-package helm-projectile
-  :custom
-  (helm-mini-default-sources
-   '(helm-source-buffers-list
-     helm-source-recentf
-     helm-source-projectile-files-list)))
-
 (use-package helm-xref
   :custom
   (xref-show-xrefs-function 'helm-xref-show-xrefs))
-
 
 ;; https://github.com/emacs-helm/helm/issues/1976#issuecomment-378724670
 (setq x-wait-for-event-timeout nil)
