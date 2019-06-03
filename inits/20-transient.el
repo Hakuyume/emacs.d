@@ -7,7 +7,7 @@
   :demand
   :config (progn
             (define-transient-command transient-dashboard ()
-              [[("f" "Flycheck" helm-flycheck)]
+              [[("e" "Flycheck" helm-flycheck)]
                [("g" "Grep" transient-dashboard-grep)]
                [("h" "Helm" helm-mini)]
                [("H" "Helm (large)" transient-dashboard-helm-large)]
