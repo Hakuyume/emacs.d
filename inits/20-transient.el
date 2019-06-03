@@ -25,9 +25,12 @@
 
             (defun transient-dashboard-helm-large ()
               (interactive)
-              (helm '(helm-source-buffers-list
-                      helm-source-recentf
-                      helm-source-projectile-files-list)))
+              (use-package helm-projectile)
+              (let ((helm-mini-default-sources
+                     '(helm-source-buffers-list
+                       helm-source-recentf
+                       helm-source-projectile-files-list)))
+                (helm-mini)))
 
             (define-transient-command transient-dashboard-lsp ()
               [[("d" "Definition" lsp-find-definition)]
