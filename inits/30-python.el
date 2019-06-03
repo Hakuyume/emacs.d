@@ -3,7 +3,8 @@
   (lsp-pyls-plugins-pyflakes-enabled nil)
   (lsp-pyls-configuration-sources '("flake8"))
   :hook (python-mode . (lambda ()
-                         (let ((lsp-pyls-server-command (find-pyls (buffer-file-name)))) (lsp)))))
+                         (setq-local lsp-pyls-server-command (find-pyls (buffer-file-name)))
+                         (lsp))))
 
 (use-package indent-guide
   :hook (python-mode . indent-guide-mode))
