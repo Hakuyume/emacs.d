@@ -1,7 +1,5 @@
 (use-package lsp
-  :custom
-  (lsp-pyls-plugins-pyflakes-enabled nil)
-  (lsp-pyls-configuration-sources '("flake8"))
+  :custom (lsp-pyls-configuration-sources '("flake8"))
   :hook (python-mode . (lambda ()
                          (setq-local lsp-pyls-server-command (find-pyls (buffer-file-name)))
                          (lsp))))
