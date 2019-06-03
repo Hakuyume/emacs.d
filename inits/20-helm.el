@@ -1,5 +1,6 @@
 (use-package helm
   :bind (("M-y" . helm-show-kill-ring)
+         ("M-x" . helm-M-x)
          :map helm-map
          ("C-h" . delete-backward-char)
          ("<tab>" . helm-execute-persistent-action))
