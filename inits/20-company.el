@@ -17,4 +17,5 @@
          '(company-tooltip-annotation ((t (:inherit font-lock-comment-face))))
          `(company-scrollbar-bg ((t (:background ,(color-lighten-name bg 10)))))
          `(company-scrollbar-fg ((t (:background ,(color-lighten-name bg 5)))))))))
-  :hook (after-init . global-company-mode))
+  :hook
+  (after-init . global-company-mode))

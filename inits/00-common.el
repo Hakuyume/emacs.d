@@ -44,5 +44,7 @@
   (set-fontset-font nil '(#x80 . #x3FFFFF) (font-spec :family "IPA Gothic")))
 
 (use-package recentf
-  :custom (recentf-max-saved-items 10000)
-  :init (recentf-mode 1))
+  :custom
+  (recentf-max-saved-items 10000)
+  :init
+  (recentf-mode 1))

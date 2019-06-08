@@ -1,11 +1,14 @@
 (use-package lsp
-  :custom (lsp-pyls-configuration-sources '("flake8"))
-  :hook (python-mode . (lambda ()
-                         (setq-local lsp-pyls-server-command (find-pyls (buffer-file-name)))
-                         (lsp))))
+  :custom
+  (lsp-pyls-configuration-sources '("flake8"))
+  :hook
+  (python-mode . (lambda ()
+                   (setq-local lsp-pyls-server-command (find-pyls (buffer-file-name)))
+                   (lsp))))
 
 (use-package indent-guide
-  :hook (python-mode . indent-guide-mode))
+  :hook
+  (python-mode . indent-guide-mode))
 
 (defun find-python-venv (path)
   (cond
