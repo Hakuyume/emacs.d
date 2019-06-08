@@ -29,8 +29,7 @@
 (when window-system
   (tool-bar-mode -1)
   (set-scroll-bar-mode 'right)
-  (load-theme 'misterioso)
-  (set-frame-parameter nil 'alpha 95))
+  (load-theme 'misterioso))
 
 (when (eq window-system 'w32)
   (set-face-attribute 'default nil :family "Consolas")
