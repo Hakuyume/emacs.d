@@ -10,7 +10,7 @@
               [[("e" "Flycheck" helm-flycheck)]
                [("g" "Grep" transient-dashboard-grep)]
                [("h" "Helm" helm-mini)]
-               [("H" "Helm (large)" transient-dashboard-helm-large)]
+               [("H" "Helm (full)" transient-dashboard-helm-full)]
                [("j" "Goto Line" goto-line)]
                [("l" "LSP" transient-dashboard-lsp)]
                [("m" "Magit" magit-status)]])
@@ -23,7 +23,7 @@
               (interactive)
               (let ((default-directory (magit-toplevel))) (helm-grep-do-git-grep t)))
 
-            (defun transient-dashboard-helm-large ()
+            (defun transient-dashboard-helm-full ()
               (interactive)
               (use-package helm-projectile)
               (let ((helm-mini-default-sources
