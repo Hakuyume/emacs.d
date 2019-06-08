@@ -1,9 +1,11 @@
 (use-package helm
-  :bind (("M-y" . helm-show-kill-ring)
-         ("M-x" . helm-M-x)
-         :map helm-map
-         ("C-h" . delete-backward-char)
-         ("<tab>" . helm-execute-persistent-action))
+  :bind
+  (("M-y" . helm-show-kill-ring)
+   ("M-x" . helm-M-x))
+  :config
+  (progn
+    (define-key helm-map (kbd "C-h") nil)
+    (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action))
   :custom
   (helm-display-function 'pop-to-buffer)
   (helm-mini-default-sources
