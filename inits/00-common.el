@@ -16,10 +16,6 @@
 
 (setq windmove-wrap-around t)
 (windmove-default-keybindings)
-(global-set-key (kbd "C-S-b") 'windmove-left)
-(global-set-key (kbd "C-S-f") 'windmove-right)
-(global-set-key (kbd "C-S-n") 'windmove-down)
-(global-set-key (kbd "C-S-p") 'windmove-up)
 
 (setq-default truncate-lines t)
 (global-linum-mode t)
