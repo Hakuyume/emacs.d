@@ -1,7 +1,7 @@
 (use-package dired)
 
 (use-package transient
-  :bind ("C-z" . transient-dashboard)
+  :bind ("C-q" . transient-dashboard)
   :demand
   :config
   (progn
@@ -12,8 +12,7 @@
        [("H" "Helm (full)" transient-dashboard-helm-full)]
        [("j" "Goto Line" goto-line)]
        [("l" "LSP" transient-dashboard-lsp)]
-       [("m" "Magit" magit-status)]
-       [("z" "Suspend" suspend-frame)]])
+       [("m" "Magit" magit-status)]])
 
     (define-transient-command transient-dashboard-grep ()
       [[("g" "Git Grep" transient-dashboard-grep-git-grep)]
