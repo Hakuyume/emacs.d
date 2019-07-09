@@ -44,3 +44,5 @@
   (recentf-max-saved-items 10000)
   :init
   (recentf-mode 1))
+
+(setq vc-handled-backends nil)
