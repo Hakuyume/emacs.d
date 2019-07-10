@@ -41,18 +41,28 @@
       (helm
        :sources (helm-build-in-file-source
                     "Rsync" (expand-file-name ".rsync-remotes" (magit-toplevel))
-                    :action (lambda (remote)
-                              (let ((default-directory (magit-toplevel)))
-                                (set-process-sentinel
-                                 (start-process "rsync" "*rsync*"
-                                                "rsync" "-acv" "--delete"
-                                                "--exclude=.rsync-remotes"
-                                                "--exclude=.git/"
-                                                "--exclude-from=.gitignore"
-                                                "./" remote)
-                                 (lambda (process event)
-                                   (message (format "%s: %s"
-                                                    (mapconcat 'identity (process-command process) " ")
-                                                    event)))))))
-       :buffer "*helm rsync*")))
+                    :action 'transient-dashboard-rsync-action)
+       :buffer "*helm rsync*"))
+
+    (defun transient-dashboard-rsync-action (remote)
+      (let ((default-directory (magit-toplevel)))
+        (if-let ((buffer (get-buffer "*gitignore*")))
+            (with-current-buffer buffer
+              (erase-buffer)))
+        (let ((status
+               (call-process "git" nil "*gitignore*" nil
+                             "ls-files" "--other" "--ignored"
+                             "--exclude-standard" "--directory")))
+          (if (not (= status 0)) (error "git ls-files: %s" status)))
+        (let ((process
+               (start-process "rsync" "*rsync*"
+                              "rsync" "-acv" "--delete"
+                              "--exclude=.git/" "--exclude-from=/dev/stdin"
+                              "./" remote)))
+          (with-current-buffer "*gitignore*"
+            (process-send-region process (point-min) (point-max))
+            (process-send-eof process))
+          (set-process-sentinel
+           process
+           (lambda (process event) (message (format "rsync: %s" event))))))))
   :demand)
