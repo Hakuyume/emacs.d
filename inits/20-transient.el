@@ -45,12 +45,11 @@
        :buffer "*helm rsync*"))
 
     (defun transient-dashboard-rsync-action (remote)
-      (let ((default-directory (magit-toplevel)))
-        (if-let ((buffer (get-buffer "*gitignore*")))
-            (with-current-buffer buffer
-              (erase-buffer)))
+      (let ((default-directory (magit-toplevel))
+            (gitignore (get-buffer-create "*gitignore*")))
+        (with-current-buffer gitignore (erase-buffer))
         (let ((status
-               (call-process "git" nil "*gitignore*" nil
+               (call-process "git" nil gitignore nil
                              "ls-files" "--other" "--ignored"
                              "--exclude-standard" "--directory")))
           (if (not (= status 0)) (error "git ls-files: %s" status)))
@@ -59,7 +58,7 @@
                               "rsync" "-acv" "--delete"
                               "--exclude=.git/" "--exclude-from=/dev/stdin"
                               "./" remote)))
-          (with-current-buffer "*gitignore*"
+          (with-current-buffer gitignore
             (process-send-region process (point-min) (point-max))
             (process-send-eof process))
           (set-process-sentinel
