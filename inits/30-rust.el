@@ -1,7 +1,7 @@
 (use-package lsp
   :config
   (lsp-register-client
-   (make-lsp-client :new-connection (lsp-tramp-connection "$HOME/.cargo/bin/rls 2>/dev/null")
+   (make-lsp-client :new-connection (lsp-tramp-connection "$HOME/.cargo/bin/rls")
                     :major-modes '(rust-mode)
                     :remote? t
                     :server-id 'rls-remote
