@@ -47,6 +47,7 @@
     (defun transient-dashboard-rsync-action (remote)
       (let ((default-directory (magit-toplevel))
             (gitignore (get-buffer-create "*gitignore*")))
+        (if (not default-directory) (error "not a git repository"))
         (with-current-buffer gitignore (erase-buffer))
         (let ((status
                (call-process "git" nil gitignore nil
