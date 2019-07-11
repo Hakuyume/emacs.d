@@ -12,7 +12,7 @@
        [("j" "Goto Line" goto-line)]
        [("l" "LSP" transient-dashboard-lsp)]
        [("m" "Magit" magit-status)]
-       [("r" "Rsync" transient-dashboard-rsync)]])
+       [("s" "Rsync" transient-dashboard-rsync)]])
 
     (define-transient-command transient-dashboard-grep ()
       [[("g" "Git Grep" transient-dashboard-grep-git-grep)]
