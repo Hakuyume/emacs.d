@@ -56,7 +56,7 @@
           (if (not (= status 0)) (error "git ls-files: %s" status)))
         (let ((process
                (start-process "rsync" "*rsync*"
-                              "rsync" "-acv" "--delete"
+                              "rsync" "-acv"
                               "--exclude=.git/" "--exclude-from=/dev/stdin"
                               "./" remote)))
           (with-current-buffer gitignore
