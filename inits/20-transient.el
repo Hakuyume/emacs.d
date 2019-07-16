@@ -45,12 +45,13 @@
        :buffer "*helm rsync*"))
 
     (defun transient-dashboard-git-sync-action (remote)
-      (let* ((tree (magit-with-temp-index "HEAD" nil
+      (let* ((ref "refs/heads/_sync")
+             (tree (magit-with-temp-index "HEAD" nil
                (magit-call-git "add" "--all")
                (magit-git-string "write-tree")))
-             (parent (or (magit-rev-parse "refs/heads/_sync" "--")
+             (parent (or (magit-rev-parse ref "--")
                          (magit-rev-parse "HEAD" "--")))
              (commit (magit-commit-tree "" tree parent)))
-        (magit-update-ref "refs/heads/_sync" "sync working tree" commit)
-        (magit-run-git-async "push" "-v" remote "refs/heads/_sync:refs/heads/_sync"))))
+        (magit-update-ref ref "sync working tree" commit)
+        (magit-run-git-async "push" "-v" remote (format "%s:%s" ref ref)))))
   :demand)
