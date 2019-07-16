@@ -46,7 +46,7 @@
 
     (defun transient-dashboard-git-sync-action (remote)
       (let* ((ref "refs/heads/_sync")
-             (tree (magit-with-temp-index "HEAD" nil
+             (tree (magit-with-temp-index (magit-rev-parse "HEAD" "--") nil
                (magit-call-git "add" "--all")
                (magit-git-string "write-tree")))
              (parent (or (magit-rev-parse ref "--")
