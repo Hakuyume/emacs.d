@@ -12,7 +12,7 @@
        [("j" "Goto Line" goto-line)]
        [("l" "LSP" transient-dashboard-lsp)]
        [("m" "Magit" magit-status)]
-       [("s" "Rsync" transient-dashboard-rsync)]])
+       [("s" "Git Sync" transient-dashboard-git-sync)]])
 
     (define-transient-command transient-dashboard-grep ()
       [[("g" "Git Grep" transient-dashboard-grep-git-grep)]
@@ -36,33 +36,21 @@
        [("i" "Implementation" lsp-find-implementation)]
        [("r" "Rename" lsp-rename)]])
 
-    (defun transient-dashboard-rsync ()
+    (defun transient-dashboard-git-sync ()
       (interactive)
       (helm
        :sources (helm-build-in-file-source
-                    "Rsync" (expand-file-name ".rsync-remotes" (magit-toplevel))
-                    :action 'transient-dashboard-rsync-action)
+                    "Git Sync" (expand-file-name ".gitsync" (magit-toplevel))
+                    :action 'transient-dashboard-git-sync-action)
        :buffer "*helm rsync*"))
 
-    (defun transient-dashboard-rsync-action (remote)
-      (let ((default-directory (magit-toplevel))
-            (gitignore (get-buffer-create "*gitignore*")))
-        (if (not default-directory) (error "not a git repository"))
-        (with-current-buffer gitignore (erase-buffer))
-        (let ((status
-               (call-process "git" nil gitignore nil
-                             "ls-files" "--other" "--ignored"
-                             "--exclude-standard" "--directory")))
-          (if (not (= status 0)) (error "git ls-files: %s" status)))
-        (let ((process
-               (start-process "rsync" "*rsync*"
-                              "rsync" "-acv"
-                              "--exclude=.git/" "--exclude-from=/dev/stdin"
-                              "./" remote)))
-          (with-current-buffer gitignore
-            (process-send-region process (point-min) (point-max))
-            (process-send-eof process))
-          (set-process-sentinel
-           process
-           (lambda (process event) (message (format "rsync: %s" event))))))))
+    (defun transient-dashboard-git-sync-action (remote)
+      (let* ((tree (magit-with-temp-index "HEAD" nil
+               (magit-call-git "add" "--all")
+               (magit-git-string "write-tree")))
+             (parent (or (magit-rev-parse "refs/heads/_sync" "--")
+                         (magit-rev-parse "HEAD" "--")))
+             (commit (magit-commit-tree "" tree parent)))
+        (magit-update-ref "refs/heads/_sync" "sync working tree" commit)
+        (magit-run-git-async "push" "-v" remote "refs/heads/_sync:refs/heads/_sync"))))
   :demand)
