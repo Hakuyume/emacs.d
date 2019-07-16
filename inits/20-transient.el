@@ -42,7 +42,7 @@
        :sources (helm-build-in-file-source
                     "Git Sync" (expand-file-name ".gitsync" (magit-toplevel))
                     :action 'transient-dashboard-git-sync-action)
-       :buffer "*helm rsync*"))
+       :buffer "*helm git sync*"))
 
     (defun transient-dashboard-git-sync-action (remote)
       (let* ((ref "refs/heads/_sync")
