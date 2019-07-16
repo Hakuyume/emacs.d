@@ -52,6 +52,6 @@
              (parent (or (magit-rev-parse ref "--")
                          (magit-rev-parse "HEAD" "--")))
              (commit (magit-commit-tree "" tree parent)))
-        (magit-update-ref ref "sync working tree" commit)
+        (magit-update-ref ref "sync" commit)
         (magit-run-git-async "push" "-v" remote (format "%s:%s" ref ref)))))
   :demand)
