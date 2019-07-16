@@ -20,7 +20,7 @@
 
     (defun transient-dashboard-grep-git-grep ()
       (interactive)
-      (let ((default-directory (magit-toplevel))) (helm-grep-do-git-grep t)))
+      (magit-with-toplevel (helm-grep-do-git-grep t)))
 
     (defun transient-dashboard-helm-full ()
       (interactive)
