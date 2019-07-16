@@ -51,7 +51,10 @@
                (magit-git-string "write-tree")))
              (parent (or (magit-rev-parse ref "--")
                          (magit-rev-parse "HEAD" "--")))
-             (commit (magit-commit-tree "" tree parent)))
+             (commit (if (and parent
+                              (magit-git-success "diff-tree" "--quiet" parent tree))
+                         parent
+                       (magit-commit-tree "" tree parent))))
         (magit-update-ref ref "sync" commit)
         (magit-run-git-async "push" "-v" remote (format "%s:%s" ref ref)))))
   :demand)
