@@ -1,4 +1,5 @@
-(add-to-list 'auto-mode-alist '("/PKGBUILD" . shell-script-mode))
-(add-hook 'sh-mode-hook
-          (lambda ()
-            (sh-electric-here-document-mode -1)))
+(use-package sh-script
+  :custom
+  (sh-here-document-word " 'EOD'")
+  :mode
+  ("/PKGBUILD" . shell-script-mode))
