@@ -2,7 +2,7 @@
 
 (use-package company
   :bind
-  ("C-M-i" . company-complete)
+  ("M-<tab>" . company-complete)
   :config
   (progn
     (define-key company-active-map (kbd "C-h") nil)
