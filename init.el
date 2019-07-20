@@ -40,5 +40,7 @@
   (defmacro use-package (&rest args)))
 
 (use-package init-loader
-  :custom (init-loader-show-log-after-init nil)
-  :init (init-loader-load))
+  :custom
+  (init-loader-show-log-after-init nil)
+  :init
+  (init-loader-load))
