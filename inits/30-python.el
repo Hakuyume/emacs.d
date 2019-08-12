@@ -16,7 +16,6 @@
 (defun find-pyvenv-directory (path)
   (cond
    ((not path) nil)
-   ((equal path "/") nil)
    ((file-regular-p path) (find-pyvenv-directory (file-name-directory path)))
    ((file-directory-p path)
     (or
