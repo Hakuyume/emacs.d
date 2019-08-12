@@ -1,29 +1,27 @@
+(use-package pyvenv)
+
 (use-package lsp
   :custom
   (lsp-pyls-configuration-sources '("flake8"))
   :hook
   (python-mode . (lambda ()
-                   (setq-local lsp-pyls-server-command (find-pyls (buffer-file-name)))
+                   (if-let ((pyvenv-directory (find-pyvenv-directory (buffer-file-name))))
+                       (pyvenv-activate pyvenv-directory))
                    (lsp))))
 
 (use-package indent-guide
   :hook
   (python-mode . indent-guide-mode))
 
-(defun find-python-venv (path)
+(defun find-pyvenv-directory (path)
   (cond
    ((not path) nil)
    ((equal path "/") nil)
-   ((file-regular-p path) (find-python-venv (file-name-directory path)))
+   ((file-regular-p path) (find-pyvenv-directory (file-name-directory path)))
    ((file-directory-p path)
     (or
      (seq-find
       (lambda (path) (file-regular-p (expand-file-name "pyvenv.cfg" path)))
       (directory-files path t))
-     (find-python-venv (file-name-directory (directory-file-name path)))))))
-
-(defun find-pyls (path)
-  (cons
-   (if-let ((venv (find-python-venv path)))
-       (expand-file-name "python" (expand-file-name "bin" venv)) "python")
-   '("-m" "pyls")))
+     (let ((parent (file-name-directory (directory-file-name path))))
+       (if (not (equal parent path)) (find-pyvenv-directory parent)))))))

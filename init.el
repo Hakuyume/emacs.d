@@ -36,7 +36,9 @@
      toml-mode
      typescript-mode
      web-mode
-     yaml-mode)))
+     yaml-mode
+
+     pyvenv)))
 
 (unless (package-installed-p 'use-package)
   (defmacro use-package (&rest args)))
