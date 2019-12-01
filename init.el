@@ -1,7 +1,8 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 ;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=34341#31
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+(if (eq emacs-major-version 26)
+    (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 (package-initialize)
 
 (custom-set-variables
