@@ -26,10 +26,15 @@
 (global-set-key (kbd "C-x C-c")
                 (lambda () (interactive) (message "use M-x exit")))
 
+(load-theme 'misterioso)
+(setq default-background (face-attribute 'default :background))
+(when (not window-system)
+  (setq frame-background-mode (frame-parameter nil 'background-mode))
+  (set-face-background 'default "unspecified-bg"))
+
 (when window-system
   (tool-bar-mode -1)
-  (set-scroll-bar-mode 'right)
-  (load-theme 'misterioso))
+  (set-scroll-bar-mode 'right))
 
 (when (eq window-system 'w32)
   (set-face-attribute 'default nil :family "Consolas")
