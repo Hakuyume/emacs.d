@@ -1,7 +1,6 @@
 (use-package helm
   :bind
-  (("M-y" . helm-show-kill-ring)
-   ("M-x" . helm-M-x))
+  ("M-y" . helm-show-kill-ring)
   :config
   (progn
     (define-key helm-map (kbd "C-h") nil)
