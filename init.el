@@ -23,6 +23,7 @@
      lsp-ui
      magit
      shackle
+     xclip
 
      cmake-mode
      dockerfile-mode
