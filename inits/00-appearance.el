@@ -4,7 +4,7 @@
 
 (load-theme 'misterioso)
 (setq default-background (face-attribute 'default :background))
-(when (not window-system)
+(unless window-system
   (setq frame-background-mode (frame-parameter nil 'background-mode))
   (set-face-background 'default "unspecified-bg"))
 

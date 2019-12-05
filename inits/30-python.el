@@ -23,4 +23,4 @@
       (lambda (path) (file-regular-p (expand-file-name "pyvenv.cfg" path)))
       (directory-files path t))
      (let ((parent (file-name-directory (directory-file-name path))))
-       (if (not (equal parent path)) (find-pyvenv-directory parent)))))))
+       (unless (equal parent path) (find-pyvenv-directory parent)))))))
