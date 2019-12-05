@@ -1,13 +1,8 @@
 (defun make-scratch ()
-  (progn
+  (unless (get-buffer "*scratch*")
     (set-buffer (get-buffer-create "*scratch*"))
     (funcall initial-major-mode)
     (erase-buffer)))
-(add-hook 'kill-buffer-query-functions
-          (lambda ()
-            (if (string= "*scratch*" (buffer-name))
-                (make-scratch) t)))
-(add-hook 'after-save-hook
-          (lambda ()
-            (unless (member (get-buffer "*scratch*") (buffer-list))
-              (make-scratch))))
+
+(add-hook 'after-save-hook 'make-scratch)
+(add-hook 'kill-buffer-hook 'make-scratch)
