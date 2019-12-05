@@ -1,6 +1,7 @@
 (menu-bar-mode -1)
-(tool-bar-mode -1)
-(set-scroll-bar-mode 'right)
+(when window-system
+  (tool-bar-mode -1)
+  (set-scroll-bar-mode 'right))
 
 (load-theme 'misterioso)
 (setq default-background (face-attribute 'default :background))
