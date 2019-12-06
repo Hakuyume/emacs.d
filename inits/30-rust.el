@@ -1,3 +1,5 @@
+(use-package rust-mode)
+
 (use-package lsp-mode
   :custom
   (lsp-rust-server 'rust-analyzer)
