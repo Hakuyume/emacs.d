@@ -3,7 +3,6 @@
 /custom.el
 /eshell/
 /recentf
-/straight/build*
-/straight/repos/
+/straight/
 /tramp
 /transient/
