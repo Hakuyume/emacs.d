@@ -1,4 +1,4 @@
-(use-package lsp
+(use-package lsp-mode
   :custom
   (lsp-rust-server 'rust-analyzer)
   (lsp-rust-clippy-preference "on")

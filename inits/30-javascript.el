@@ -1,3 +1,3 @@
-(use-package js2-jsx-mode
+(use-package js2-mode
   :mode
-  "\\.js\\'")
+  ("\\.js\\'" . js2-jsx-mode))

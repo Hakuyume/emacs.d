@@ -1,4 +1,4 @@
-(use-package lsp
+(use-package lsp-mode
   :custom
   (lsp-enable-snippet nil)
   (lsp-prefer-flymake nil)

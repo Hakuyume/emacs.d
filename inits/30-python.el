@@ -1,6 +1,6 @@
 (use-package pyvenv)
 
-(use-package lsp
+(use-package lsp-mode
   :custom
   (lsp-pyls-configuration-sources '("flake8"))
   :hook

@@ -1,4 +1,8 @@
-(use-package dired)
+(use-package dired :straight nil)
+(use-package helm-flycheck)
+(use-package helm-projectile)
+(use-package lsp-mode)
+(use-package magit)
 
 (use-package transient
   :bind ("C-q" . transient-dashboard)
@@ -24,7 +28,6 @@
 
     (defun transient-dashboard--helm-full ()
       (interactive)
-      (use-package helm-projectile)
       (let ((helm-mini-default-sources
              '(helm-source-buffers-list
                helm-source-recentf

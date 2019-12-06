@@ -1,4 +1,4 @@
-(use-package buf-move
+(use-package buffer-move
   :bind
   (("C-S-<left>" . buf-move-left)
    ("C-S-<right>" . buf-move-right)
