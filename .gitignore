@@ -1,8 +1,9 @@
 /.lsp-*
 /auto-save-list/
 /custom.el
-/elpa/
 /eshell/
 /recentf
+/straight/build*
+/straight/repos/
 /tramp
 /transient/
