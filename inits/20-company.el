@@ -8,10 +8,14 @@
     (define-key company-active-map (kbd "C-h") nil)
     (define-key company-active-map (kbd "C-n") 'company-select-next)
     (define-key company-active-map (kbd "C-p") 'company-select-previous)
-    (let ((bg default-background)) (custom-set-faces
-       `(company-tooltip ((t (:inherit default :background ,(color-lighten-name bg 2)))))
-       `(company-scrollbar-bg ((t (:background ,(color-lighten-name bg 10)))))
-       `(company-scrollbar-fg ((t (:background ,(color-lighten-name bg 5))))))))
+    (when (color-name-to-rgb default-background)
+      (custom-set-faces
+       `(company-tooltip
+         ((t (:inherit default :background ,(color-lighten-name default-background 2)))))
+       `(company-scrollbar-bg
+         ((t (:background ,(color-lighten-name default-background 10)))))
+       `(company-scrollbar-fg
+         ((t (:background ,(color-lighten-name default-background 5))))))))
   :custom-face
   (company-tooltip-selection ((t (:inherit font-lock-function-name-face))))
   (company-tooltip-common ((t (:inherit font-lock-constant-face))))
