@@ -37,7 +37,18 @@
     (define-transient-command transient-dashboard--lsp ()
       [[("d" "Definition" lsp-find-definition)]
        [("i" "Implementation" lsp-find-implementation)]
-       [("r" "Rename" lsp-rename)]])
+       [("r" "Rename" lsp-rename)]
+       [("w" "Workspace folders" transient-dashboard--lsp-workspace-folders)]])
+
+    (defun transient-dashboard--lsp-workspace-folders ()
+      (interactive)
+      (helm
+       :sources (helm-build-sync-source
+                    "LSP Workspace Folders"
+                  :candidates (lsp-session-folders (lsp-session))
+                  :action '(("Switch" . lsp-workspace-folders-switch)
+                            ("Remove" . lsp-workspace-folders-remove)))
+       :buffer "*helm lsp workspace folders*"))
 
     (defun transient-dashboard--git-sync ()
       (interactive)
