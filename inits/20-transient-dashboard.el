@@ -70,5 +70,4 @@
                          parent
                        (magit-commit-tree "" tree parent))))
         (magit-update-ref ref "sync" commit)
-        (magit-run-git-async "push" "-v" remote (format "%s:%s" ref ref)))))
-  :demand)
+        (magit-run-git-async "push" "-v" remote (format "%s:%s" ref ref))))))
