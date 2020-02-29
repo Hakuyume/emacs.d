@@ -24,7 +24,7 @@
  ("let-alist" . "ef3c02fa292b6e32769945bbbfb7f2e5ac574b64")
  ("lsp-mode" . "1ab56d29bb3280584e24a68cd3ad5dc5d0563752")
  ("lsp-ui" . "da9788b42723b71318ccd0810d73d2147bc712f1")
- ("magit" . "59c70c5fb5c7e211f29e38f541d2da827765b93f")
+ ("magit" . "49dfbdbe46acbf29c28e87f12dd6f722071ef0f9")
  ("markdown-mode" . "e9dff50d572caa96b68a7466c18c97a8d6ed651c")
  ("melpa" . "979fe43b4f9325a4fccad6998763af2b44431b30")
  ("pkg-info" . "76ba7415480687d05a4353b27fea2ae02b8d9d61")
