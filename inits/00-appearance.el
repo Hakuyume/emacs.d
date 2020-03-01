@@ -1,4 +1,6 @@
 (menu-bar-mode -1)
+(unless window-system
+  (send-string-to-terminal (format "\033]2;emacs@%s\007" (system-name))))
 (when window-system
   (tool-bar-mode -1)
   (set-scroll-bar-mode 'right))
@@ -6,7 +8,6 @@
 (load-theme 'misterioso)
 (setq default-background (face-attribute 'default :background))
 (unless window-system
-  (send-string-to-terminal (format "\033]2;emacs@%s\007" (system-name)))
   (setq frame-background-mode (frame-parameter nil 'background-mode))
   (set-face-background 'default "unspecified-bg"))
 
