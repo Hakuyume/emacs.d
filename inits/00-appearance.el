@@ -1,6 +1,9 @@
 (menu-bar-mode -1)
 (unless window-system
-  (send-string-to-terminal (format "\033]2;emacs@%s\007" (system-name))))
+  (defun set-terminal-title ()
+    (send-string-to-terminal (format "\033]2;emacs@%s\007" (system-name))))
+  (set-terminal-title)
+  (add-hook 'suspend-resume-hook 'set-terminal-title))
 (when window-system
   (tool-bar-mode -1)
   (set-scroll-bar-mode 'right))
