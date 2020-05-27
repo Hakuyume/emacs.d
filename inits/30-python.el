@@ -1,8 +1,6 @@
 (use-package pyvenv)
 
 (use-package lsp-mode
-  :custom
-  (lsp-pyls-configuration-sources '("flake8"))
   :hook
   (python-mode . (lambda ()
                    (if-let ((pyvenv-directory (find-pyvenv-directory (buffer-file-name))))
