@@ -13,6 +13,7 @@
        [("g" "Grep" transient-dashboard--grep)]
        [("h" "Helm" helm-mini)]
        [("H" "Helm (full)" transient-dashboard--helm-full)]
+       [("i" "Quoted Insert" quoted-insert)]
        [("j" "Goto Line" goto-line)]
        [("l" "LSP" transient-dashboard--lsp)]
        [("m" "Magit" magit-status)]
