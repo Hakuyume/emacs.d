@@ -1,6 +1,7 @@
 /.lsp-*
 /auto-save-list/
 /custom.el
+/elpa/
 /eshell/
 /recentf
 /straight/
