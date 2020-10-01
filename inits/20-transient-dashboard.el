@@ -17,7 +17,7 @@
        [("j" "Goto Line" goto-line)]
        [("l" "LSP" transient-dashboard--lsp)]
        [("m" "Magit" magit-status)]
-       [("s" "Git Sync" transient-dashboard--git-sync)]])
+       [("s" "Rsync" transient-dashboard--rsync)]])
 
     (define-transient-command transient-dashboard--grep ()
       [[("g" "Git Grep" transient-dashboard--grep-git-grep)]
@@ -51,24 +51,16 @@
                             ("Remove" . lsp-workspace-folders-remove)))
        :buffer "*helm lsp workspace folders*"))
 
-    (defun transient-dashboard--git-sync ()
+    (defun transient-dashboard--rsync ()
       (interactive)
       (helm
        :sources (helm-build-in-file-source
-                    "Git Sync" (expand-file-name ".gitsync" (magit-toplevel))
-                    :action 'transient-dashboard--git-sync-action)
-       :buffer "*helm git sync*"))
+                    "Rsync" (expand-file-name ".rsync" (magit-toplevel))
+                    :action 'transient-dashboard--rsync-action)
+       :buffer "*helm rsync*"))
 
-    (defun transient-dashboard--git-sync-action (remote)
-      (let* ((ref "refs/heads/_sync")
-             (tree (magit-with-temp-index (magit-rev-parse "HEAD" "--") nil
-               (magit-call-git "add" "--all")
-               (magit-git-string "write-tree")))
-             (parent (or (magit-rev-parse ref "--")
-                         (magit-rev-parse "HEAD" "--")))
-             (commit (if (and parent
-                              (magit-git-success "diff-tree" "--quiet" parent tree))
-                         parent
-                       (magit-commit-tree "" tree parent))))
-        (magit-update-ref ref "sync" commit)
-        (magit-run-git-async "push" "-v" remote (format "%s:%s" ref ref))))))
+    (defun transient-dashboard--rsync-action (remote)
+      (call-process
+       "rsync"
+       nil "*rsync*" nil
+       "-av" "--delete" "--exclude=.git/" (concat (magit-toplevel) "/") remote))))
