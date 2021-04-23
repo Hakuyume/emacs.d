@@ -11,6 +11,7 @@
  ("flycheck" . "cd8e0a280c9980c8c7ce31fd2458df7fd81a0acf")
  ("gnu-elpa-mirror" . "1109d1b777feb63650436934ecc1cca8ad0f1078")
  ("go-mode.el" . "d17d21060b16a77f9ee28ff453e674225acbf1b1")
+ ("graphql-mode" . "2371316a750b807de941184d49ca19d277ecadcd")
  ("haskell-mode" . "41683c0e634bb3f54eac8747919a82132e1714fe")
  ("helm" . "19d2ba9d36615f1dea6be6cd6dcf5792dfefc45b")
  ("helm-flycheck" . "3cf7d3bb194acacc6395f88360588013d92675d6")
