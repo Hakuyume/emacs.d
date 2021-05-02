@@ -38,6 +38,7 @@
  ("shackle" . "171c3f437d853f34782b201d86ef765665b755e2")
  ("spinner" . "2daa167bec1c7566d662d48613a94453536b524a")
  ("straight.el" . "5d046ad09413f3aba6198229e392cdd3f07e77ee")
+ ("systemd-mode" . "b6ae63a236605b1c5e1069f7d3afe06ae32a7bae")
  ("toml-mode.el" . "f6c61817b00f9c4a3cab1bae9c309e0fc45cdd06")
  ("transient" . "aaac13bb9d8014ba3e91a481edb7181249cc5d30")
  ("typescript.el" . "42a60e5c881082db2ec2c541a5c154308c4863e6")
