@@ -7,5 +7,3 @@
 (use-package lsp-ui
   :custom
   (lsp-ui-doc-enable nil))
-
-(use-package company-lsp)
