@@ -17,6 +17,7 @@
  '(straight-use-package-by-default t))
 
 (setq-default indent-tabs-mode nil)
+(setq make-backup-files nil)
 
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (defalias 'exit 'save-buffers-kill-emacs)
