@@ -107,20 +107,6 @@
   :custom
   (markdown-asymmetric-header t))
 (use-package lsp-pyright
-  :config
-  (defun lsp-pyright-locate-venv ()
-    (let ((source-buffer (current-buffer))
-          (pipenv-buffer (get-buffer-create "*pipenv*")))
-      (with-current-buffer pipenv-buffer
-        (goto-char (point-max))
-        (setq buffer-read-only t)
-        (let* ((buffer-read-only nil)
-               (start (point))
-               (exit-code
-                (with-current-buffer source-buffer
-                  (call-process "pipenv" nil pipenv-buffer nil "--venv")))
-               (end (point)))
-          (if (= exit-code 0) (s-trim (buffer-substring start end)))))))
   :hook
   (python-mode . (lambda () (require 'lsp-pyright) (lsp))))
 (use-package protobuf-mode)
