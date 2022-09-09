@@ -103,6 +103,7 @@
   (dockerfile-mode-hook . (lambda () (setq-local tab-width 4)))
   :mode
   "/Containerfile")
+(use-package go-mode)
 (use-package markdown-mode
   :custom
   (markdown-asymmetric-header t))

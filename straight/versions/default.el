@@ -7,6 +7,7 @@
  ("emacsmirror-mirror" . "ebaa7a97ab71b1af4236e730e54845b380eb1792")
  ("f.el" . "d2019d4f9625bcc44349c69fe46d6645fd9ff4ff")
  ("gnu-elpa-mirror" . "465707c1f0dc0bf440200b2f3b41833141f9b0ac")
+ ("go-mode.el" . "08aa90d52f0e7d2ad02f961b554e13329672d7cb")
  ("ht.el" . "c4c1be487d6ecb353d07881526db05d7fc90ea87")
  ("hydra" . "9e9e00cb240ea1903ffd36a54956b3902c379d29")
  ("lsp-mode" . "b2dc84128fc6b2cd0460569bae6d0451856d2e0b")
