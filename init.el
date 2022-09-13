@@ -123,6 +123,8 @@
   :mode
   ("/PKGBUILD" . shell-script-mode))
 (use-package systemd)
-(use-package toml-mode)
+(use-package toml-mode
+  :mode
+  "/Pipfile")
 (use-package typescript-mode)
 (use-package yaml-mode)
