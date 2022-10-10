@@ -4,6 +4,7 @@
  ("dash.el" . "0ac1ecf6b56eb67bb81a3cf70f8d4354b5782341")
  ("dockerfile-mode" . "b63a3d12b7dea0cb9efc7f78d7ad5672ceab2a3f")
  ("el-get" . "bf3dba444dcd240b8cb358a0850c8c5a92606134")
+ ("emacs-hcl-mode" . "e4d9eef631e8a386341ae8f94f7c2579586e65b5")
  ("emacsmirror-mirror" . "ebaa7a97ab71b1af4236e730e54845b380eb1792")
  ("f.el" . "d2019d4f9625bcc44349c69fe46d6645fd9ff4ff")
  ("gnu-elpa-mirror" . "465707c1f0dc0bf440200b2f3b41833141f9b0ac")

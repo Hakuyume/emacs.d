@@ -104,6 +104,7 @@
   :mode
   "/Containerfile")
 (use-package go-mode)
+(use-package hcl-mode)
 (use-package markdown-mode
   :custom
   (markdown-asymmetric-header t))
