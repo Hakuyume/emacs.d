@@ -115,6 +115,7 @@
 (use-package rust-mode
   :custom
   (lsp-rust-server 'rust-analyzer)
+  (lsp-rust-analyzer-server-command '("rustup" "run" "stable" "rust-analyzer"))
   (lsp-rust-clippy-preference "on")
   :hook
   (rust-mode . lsp))
