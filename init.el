@@ -102,9 +102,11 @@
   :hook
   (dockerfile-mode-hook . (lambda () (setq-local tab-width 4)))
   :mode
-  "/Containerfile")
+  "/Containerfile\\'")
 (use-package go-mode)
-(use-package hcl-mode)
+(use-package hcl-mode
+  :mode
+  "\\.tf\\'")
 (use-package markdown-mode
   :custom
   (markdown-asymmetric-header t))
@@ -123,10 +125,10 @@
   :custom
   (sh-here-document-word " 'EOD'")
   :mode
-  ("/PKGBUILD" . shell-script-mode))
+  ("/PKGBUILD\\'" . shell-script-mode))
 (use-package systemd)
 (use-package toml-mode
   :mode
-  "/Pipfile")
+  "/Pipfile\\'")
 (use-package typescript-mode)
 (use-package yaml-mode)
