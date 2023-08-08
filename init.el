@@ -24,7 +24,7 @@
 (global-set-key (kbd "C-x C-c") (lambda () (interactive) (message "use M-x exit")))
 
 (column-number-mode +1)
-(global-linum-mode +1)
+(global-display-line-numbers-mode +1)
 (menu-bar-mode -1)
 (show-paren-mode +1)
 
