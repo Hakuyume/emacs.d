@@ -60,9 +60,9 @@
                 :new 'consult--file-action
                 :state 'consult--file-state)
                :append))
-(use-package lsp-mode
+(use-package eglot :straight (:type built-in)
   :hook
-  (before-save . lsp-format-buffer))
+  (before-save . eglot-format-buffer))
 (use-package magit)
 (use-package orderless
   :custom
@@ -84,6 +84,18 @@
        [("h" "Buffer" consult-buffer)]
        [("j" "Goto line" goto-line)]
        [("m" "Magit" magit-status)]])))
+(use-package treesit :straight (:type built-in)
+  :config
+  (defun treesit-install-language-grammar-needed (LANG)
+    (let ((treesit-language-source-alist
+           '(
+             (python "https://github.com/tree-sitter/tree-sitter-python" "v0.20.4")
+             (rust "https://github.com/tree-sitter/tree-sitter-rust" "v0.20.4")
+             (toml "https://github.com/tree-sitter/tree-sitter-toml" "v0.5.1")
+             (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.2" "tsx/src")
+             (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.2" "typescript/src"))))
+      (unless (treesit-ready-p LANG t)
+        (treesit-install-language-grammar LANG)))))
 (use-package vertico
   :init
   (vertico-mode +1))
@@ -110,25 +122,38 @@
 (use-package markdown-mode
   :custom
   (markdown-asymmetric-header t))
-(use-package lsp-pyright
+(use-package python
+  :init
+  (treesit-install-language-grammar-needed 'python)
+  :mode
+  ("\\.py\\'" . python-ts-mode)
   :hook
-  (python-mode . (lambda () (require 'lsp-pyright) (lsp))))
+  (python-ts-mode . eglot-ensure))
 (use-package protobuf-mode)
-(use-package rust-mode
-  :custom
-  (lsp-rust-server 'rust-analyzer)
-  (lsp-rust-analyzer-server-command '("rustup" "run" "stable" "rust-analyzer"))
-  (lsp-rust-clippy-preference "on")
+(use-package rust-ts-mode
+  :init
+  (treesit-install-language-grammar-needed 'rust)
+  :mode
+  "\\.rs\\'"
   :hook
-  (rust-mode . lsp))
+  (rust-ts-mode . eglot-ensure))
 (use-package sh-script
   :custom
   (sh-here-document-word " 'EOD'")
   :mode
   ("/PKGBUILD\\'" . shell-script-mode))
 (use-package systemd)
-(use-package toml-mode
+(use-package toml-ts-mode
+  :init
+  (treesit-install-language-grammar-needed 'toml)
   :mode
+  "\\.toml\\'"
   "/Pipfile\\'")
-(use-package typescript-mode)
+(use-package typescript-ts-mode
+  :init
+  (treesit-install-language-grammar-needed 'typescript)
+  (treesit-install-language-grammar-needed 'tsx)
+  :mode
+  "\\.ts\\'"
+  ("\\.tsx\\'" . tsx-ts-mode))
 (use-package yaml-mode)
