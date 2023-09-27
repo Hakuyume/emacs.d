@@ -85,17 +85,24 @@
        [("j" "Goto line" goto-line)]
        [("m" "Magit" magit-status)]])))
 (use-package treesit :straight (:type built-in)
+  :custom
+  (treesit-language-source-alist
+   '(
+     (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile" "v0.1.2")
+     (go "https://github.com/tree-sitter/tree-sitter-go" "v0.20.0")
+     (gomod "https://github.com/camdencheek/tree-sitter-go-mod" "v1.0.0")
+     (json "https://github.com/tree-sitter/tree-sitter-json" "v0.19.0")
+     (proto "https://github.com/mitchellh/tree-sitter-proto")
+     (python "https://github.com/tree-sitter/tree-sitter-python" "v0.20.4")
+     (rust "https://github.com/tree-sitter/tree-sitter-rust" "v0.20.4")
+     (toml "https://github.com/tree-sitter/tree-sitter-toml" "v0.5.1")
+     (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.2" "tsx/src")
+     (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.2" "typescript/src")
+     (yaml "https://github.com/ikatyang/tree-sitter-yaml" "v0.5.0")))
   :config
-  (defun treesit-install-language-grammar-needed (LANG)
-    (let ((treesit-language-source-alist
-           '(
-             (python "https://github.com/tree-sitter/tree-sitter-python" "v0.20.4")
-             (rust "https://github.com/tree-sitter/tree-sitter-rust" "v0.20.4")
-             (toml "https://github.com/tree-sitter/tree-sitter-toml" "v0.5.1")
-             (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.2" "tsx/src")
-             (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.2" "typescript/src"))))
-      (unless (treesit-ready-p LANG t)
-        (treesit-install-language-grammar LANG)))))
+  (dolist (source treesit-language-source-alist)
+    (unless (treesit-ready-p (car source) t)
+      (treesit-install-language-grammar (car source)))))
 (use-package vertico
   :init
   (vertico-mode +1))
@@ -110,31 +117,26 @@
   :init
   (windmove-default-keybindings))
 
-(use-package dockerfile-mode
-  :hook
-  (dockerfile-mode-hook . (lambda () (setq-local tab-width 4)))
+(use-package dockerfile-ts-mode
+  :demand
   :mode
-  "/Containerfile\\'")
-(use-package go-mode)
+  ;; https://github.com/emacs-mirror/emacs/blob/emacs-29.1/lisp/progmodes/dockerfile-ts-mode.el#L191
+  "\\(?:Containerfile\\(?:\\..*\\)?\\|\\.[Cc]ontainerfile\\)\\'")
+(use-package go-ts-mode)
 (use-package hcl-mode
   :mode
   "\\.tf\\'")
+(use-package json-ts-mode)
 (use-package markdown-mode
   :custom
   (markdown-asymmetric-header t))
 (use-package python
-  :init
-  (treesit-install-language-grammar-needed 'python)
-  :mode
-  ("\\.py\\'" . python-ts-mode)
+  :demand
   :hook
   (python-ts-mode . eglot-ensure))
-(use-package protobuf-mode)
+(use-package protobuf-ts-mode)
 (use-package rust-ts-mode
-  :init
-  (treesit-install-language-grammar-needed 'rust)
-  :mode
-  "\\.rs\\'"
+  :demand
   :hook
   (rust-ts-mode . eglot-ensure))
 (use-package sh-script
@@ -144,16 +146,8 @@
   ("/PKGBUILD\\'" . shell-script-mode))
 (use-package systemd)
 (use-package toml-ts-mode
-  :init
-  (treesit-install-language-grammar-needed 'toml)
+  :demand
   :mode
-  "\\.toml\\'"
-  "/Pipfile\\'")
-(use-package typescript-ts-mode
-  :init
-  (treesit-install-language-grammar-needed 'typescript)
-  (treesit-install-language-grammar-needed 'tsx)
-  :mode
-  "\\.ts\\'"
-  ("\\.tsx\\'" . tsx-ts-mode))
-(use-package yaml-mode)
+  ("/Pipfile\\'" . toml-ts-mode))
+(use-package typescript-ts-mode)
+(use-package yaml-ts-mode)
