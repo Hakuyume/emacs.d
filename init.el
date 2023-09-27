@@ -137,8 +137,21 @@
 (use-package protobuf-ts-mode)
 (use-package rust-ts-mode
   :demand
+  :config
+  (cl-defmethod project-root ((project (head cargo))) (cdr project))
+  (defun find-cargo-workspace (dir)
+    (with-current-buffer (generate-new-buffer "*cargo-metadata*")
+      (let* ((default-directory dir)
+             (metadata
+              (when (eq (call-process "cargo" nil t nil "metadata" "--format-version=1" "--no-deps") 0)
+                (goto-char (point-min))
+                (json-parse-buffer))))
+        (kill-buffer)
+        (if metadata (cons 'cargo (gethash "workspace_root" metadata))))))
   :hook
-  (rust-ts-mode . eglot-ensure))
+  (rust-ts-mode . (lambda ()
+                    (add-hook 'project-find-functions 'find-cargo-workspace nil t)
+                    (eglot-ensure))))
 (use-package sh-script
   :custom
   (sh-here-document-word " 'EOD'")
