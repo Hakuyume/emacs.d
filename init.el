@@ -131,9 +131,18 @@
   :custom
   (markdown-asymmetric-header t))
 (use-package python
-  :demand
+  :mode
+  ;; https://github.com/emacs-mirror/emacs/blob/emacs-29.1/lisp/progmodes/python.el#L6736
+  ("\\.py[iw]?\\'" . python-ts-mode)
+  :config
+  (cl-defmethod project-root ((project (head pyproject))) (cdr project))
+  (defun find-pyproject (dir)
+    (let ((project (locate-dominating-file dir "pyproject.toml")))
+      (if project (cons 'pyproject project))))
   :hook
-  (python-ts-mode . eglot-ensure))
+  (python-ts-mode . (lambda ()
+                      (add-hook 'project-find-functions 'find-pyproject nil t)
+                      (eglot-ensure))))
 (use-package protobuf-ts-mode)
 (use-package rust-ts-mode
   :demand
