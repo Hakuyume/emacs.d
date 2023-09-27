@@ -85,24 +85,24 @@
        [("j" "Goto line" goto-line)]
        [("m" "Magit" magit-status)]])))
 (use-package treesit :straight (:type built-in)
-  :custom
-  (treesit-language-source-alist
-   '(
-     (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile" "v0.1.2")
-     (go "https://github.com/tree-sitter/tree-sitter-go" "v0.20.0")
-     (gomod "https://github.com/camdencheek/tree-sitter-go-mod" "v1.0.0")
-     (json "https://github.com/tree-sitter/tree-sitter-json" "v0.19.0")
-     (proto "https://github.com/Hakuyume/tree-sitter-proto")
-     (python "https://github.com/tree-sitter/tree-sitter-python" "v0.20.4")
-     (rust "https://github.com/tree-sitter/tree-sitter-rust" "v0.20.4")
-     (toml "https://github.com/tree-sitter/tree-sitter-toml" "v0.5.1")
-     (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.2" "tsx/src")
-     (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.2" "typescript/src")
-     (yaml "https://github.com/ikatyang/tree-sitter-yaml" "v0.5.0")))
   :config
-  (dolist (source treesit-language-source-alist)
-    (unless (treesit-ready-p (car source) t)
-      (treesit-install-language-grammar (car source)))))
+  (let (
+        (treesit-language-source-alist
+         '(
+           (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile" "v0.1.2")
+           (go "https://github.com/tree-sitter/tree-sitter-go" "v0.20.0")
+           (gomod "https://github.com/camdencheek/tree-sitter-go-mod" "v1.0.0")
+           (json "https://github.com/tree-sitter/tree-sitter-json" "v0.19.0")
+           (proto "https://github.com/Hakuyume/tree-sitter-proto")
+           (python "https://github.com/tree-sitter/tree-sitter-python" "v0.20.4")
+           (rust "https://github.com/tree-sitter/tree-sitter-rust" "v0.20.4")
+           (toml "https://github.com/tree-sitter/tree-sitter-toml" "v0.5.1")
+           (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.2" "tsx/src")
+           (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.2" "typescript/src")
+           (yaml "https://github.com/ikatyang/tree-sitter-yaml" "v0.5.0"))))
+    (dolist (source treesit-language-source-alist)
+      (unless (treesit-ready-p (car source) t)
+        (treesit-install-language-grammar (car source))))))
 (use-package vertico
   :init
   (vertico-mode +1))
