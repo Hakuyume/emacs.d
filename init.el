@@ -95,7 +95,9 @@
            (yaml "https://github.com/ikatyang/tree-sitter-yaml" "v0.5.0"))))
     (dolist (source treesit-language-source-alist)
       (unless (treesit-ready-p (car source) t)
-        (treesit-install-language-grammar (car source))))))
+        (treesit-install-language-grammar (car source)))))
+  :hook
+  (eglot-managed-mode . (lambda () (eglot-inlay-hints-mode -1))))
 (use-package vertico
   :init
   (vertico-mode +1))
