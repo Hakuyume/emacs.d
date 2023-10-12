@@ -56,7 +56,8 @@
 (use-package eglot :straight (:type built-in)
   :hook
   (before-save . eglot-format-buffer)
-  (eglot-managed-mode . (lambda () (eglot-inlay-hints-mode -1))))
+  (eglot-managed-mode . (lambda ()
+                          (eglot-inlay-hints-mode (if window-system +1 -1)))))
 (use-package magit)
 (use-package orderless
   :custom
