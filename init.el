@@ -55,7 +55,8 @@
                :append))
 (use-package eglot :straight (:type built-in)
   :hook
-  (before-save . eglot-format-buffer))
+  (before-save . eglot-format-buffer)
+  (eglot-managed-mode . (lambda () (eglot-inlay-hints-mode -1))))
 (use-package magit)
 (use-package orderless
   :custom
@@ -95,9 +96,7 @@
            (yaml "https://github.com/ikatyang/tree-sitter-yaml" "v0.5.0"))))
     (dolist (source treesit-language-source-alist)
       (unless (treesit-ready-p (car source) t)
-        (treesit-install-language-grammar (car source)))))
-  :hook
-  (eglot-managed-mode . (lambda () (eglot-inlay-hints-mode -1))))
+        (treesit-install-language-grammar (car source))))))
 (use-package vertico
   :init
   (vertico-mode +1))
