@@ -27,7 +27,9 @@
 (global-display-line-numbers-mode +1)
 (menu-bar-mode -1)
 (show-paren-mode +1)
-(when window-system (tool-bar-mode -1))
+(when window-system
+  (load-theme 'modus-vivendi)
+  (tool-bar-mode -1))
 
 (setq initial-major-mode 'fundamental-mode)
 (setq initial-scratch-message "")
