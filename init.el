@@ -29,6 +29,7 @@
 (show-paren-mode +1)
 (when window-system
   (load-theme 'modus-vivendi)
+  (set-frame-font "-*-Iosevka Nerd Font Mono-regular-normal-normal-*-*-160-*-*-m-0-iso10646-1")
   (tool-bar-mode -1))
 
 (setq initial-major-mode 'fundamental-mode)
