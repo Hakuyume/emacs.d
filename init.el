@@ -12,7 +12,7 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(straight-use-package 'use-package)
+(straight-use-package '(use-package :type built-in))
 (custom-set-variables
  '(straight-use-package-by-default t))
 

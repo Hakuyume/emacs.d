@@ -15,7 +15,6 @@
  ("straight.el" . "9b11112b2e7aedd994feb2d8f95bd66dbc5749a5")
  ("systemd-mode" . "8742607120fbc440821acbc351fda1e8e68a8806")
  ("transient" . "04f87b4ab3c7448a78f452cadaaf5d9e7a216d1d")
- ("use-package" . "a6e856418d2ebd053b34e0ab2fda328abeba731c")
  ("vertico" . "3baad81495ea8db56966066732d69fd8a25d7d18")
  ("with-editor" . "fcd186d1e684c2dca6497c89af77b27b2b036c11"))
 :gamma
