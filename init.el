@@ -92,7 +92,6 @@
            (go "https://github.com/tree-sitter/tree-sitter-go" "v0.20.0")
            (gomod "https://github.com/camdencheek/tree-sitter-go-mod" "v1.0.0")
            (json "https://github.com/tree-sitter/tree-sitter-json" "v0.19.0")
-           (proto "https://github.com/Hakuyume/tree-sitter-proto")
            (python "https://github.com/tree-sitter/tree-sitter-python" "v0.20.4")
            (rust "https://github.com/tree-sitter/tree-sitter-rust" "v0.20.4")
            (toml "https://github.com/tree-sitter/tree-sitter-toml" "v0.5.1")
@@ -142,7 +141,7 @@
   (python-ts-mode . (lambda ()
                       (add-hook 'project-find-functions 'find-pyproject nil t)
                       (eglot-ensure))))
-(use-package protobuf-ts-mode)
+(use-package protobuf-mode)
 (use-package rust-ts-mode
   :demand
   :config
