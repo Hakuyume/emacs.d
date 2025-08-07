@@ -81,7 +81,7 @@
       [[("e" "Flymake" consult-flymake)]
        [("g" "Git grep" consult-git-grep)]
        [("h" "Buffer" consult-buffer)]
-       [("j" "Goto line" goto-line)]
+       [("j" "Goto line" consult-goto-line)]
        [("m" "Magit" magit-status)]])))
 (use-package treesit :straight (:type built-in)
   :config
