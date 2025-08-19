@@ -128,6 +128,8 @@
 (use-package markdown-mode
   :custom
   (markdown-asymmetric-header t))
+(use-package nix-mode
+  :mode "\\.nix\\'")
 (use-package python
   :mode
   ;; https://github.com/emacs-mirror/emacs/blob/emacs-29.1/lisp/progmodes/python.el#L6736
