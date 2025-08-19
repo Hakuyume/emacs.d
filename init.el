@@ -92,6 +92,7 @@
            (go "https://github.com/tree-sitter/tree-sitter-go" "v0.23.4")
            (gomod "https://github.com/camdencheek/tree-sitter-go-mod" "v1.1.0")
            (json "https://github.com/tree-sitter/tree-sitter-json" "v0.24.8")
+           (nix "https://github.com/nix-community/tree-sitter-nix" "v0.3.0")
            (python "https://github.com/tree-sitter/tree-sitter-python" "v0.23.6")
            (rust "https://github.com/tree-sitter/tree-sitter-rust" "v0.23.2")
            (toml "https://github.com/tree-sitter/tree-sitter-toml" "v0.5.1")
@@ -128,7 +129,7 @@
 (use-package markdown-mode
   :custom
   (markdown-asymmetric-header t))
-(use-package nix-mode
+(use-package nix-ts-mode
   :mode "\\.nix\\'")
 (use-package python
   :mode
